@@ -4,7 +4,7 @@ $user = "mttiyzfntucejl";
 $password = "cKeLbaJYsEc-RGBwAO0GJVLJQh";
 $dbname = "d6i1ehn8ve7f2c";
 $port = "5432";
-$host = "54.235.250.41";
+$host = "d6i1ehn8ve7f2c";
 
 $cadenaConexion = "host=$host port=$port dbname=$dbname user=$user password=$password";
 
