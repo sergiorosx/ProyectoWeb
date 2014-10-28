@@ -4,7 +4,7 @@ $user = "mttiyzfntucejl";
 $password = "cKeLbaJYsEc-RGBwAO0GJVLJQh";
 $dbname = "d6i1ehn8ve7f2c";
 $port = "5432";
-$host = "d6i1ehn8ve7f2c";
+$host = "ec2-54-235-250-41.compute-1.amazonaws.com";
 
 $cadenaConexion = "host=$host port=$port dbname=$dbname user=$user password=$password";
 
