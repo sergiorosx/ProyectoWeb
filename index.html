@@ -69,12 +69,12 @@
 	      <div class="modal-body" id="login_details">
 	        <span> ¿Ya tienes una cuenta? </span> </br></br>
 	        <span style="font-weight:bold;">*Correo</span><br />
-	        <input type="email" placeholder="example@correounivalle.edu.co" name="login_correo" /><br /></br>
+	        <input type="email" placeholder="example@correounivalle.edu.co" name="login_correo" id="email"/><br /></br>
 	        <span style="font-weight:bold;" >*Contraseña</span><br />
-	        <input type="password" placeholder="Password" name="login_contraseña" /><br />
+	        <input type="password" placeholder="Password" name="login_contraseña" id="contrasenia"/><br />
 	      </div>
 	      <div class="modal-footer" >
-			   <input style="float: left" type="button" class="btn btn-success" value="Iniciar Sesión" /> 
+			   <input style="float: left" type="button" class="btn btn-success" value="Iniciar Sesión" onclick = "login()"/> 
 	       <span style="padding-right: 12px">Iniciar sesión con:</span>
 	       			<a class="btn btn-social-icon btn-facebook">
 				<i class="fa fa-facebook"></i>
@@ -164,4 +164,20 @@
         </div>
     </footer>
 </body>
+<script>
+	function login(){
+		var email = document.getElementById("email").value;
+		var pass = document.getElementById("contrasenia").value;
+		if(email.value == "" || pass.value == ""){
+			alert("Email o password vacios");
+		}else{
+			alert("entro");
+			$.ajax({
+      			type: "POST",
+      			url: "login.php",
+      			data: { "email" :  "pass" },
+			});
+		}
+	}
+</script>
 </html>
