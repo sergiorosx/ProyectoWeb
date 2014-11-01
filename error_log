@@ -1,2 +1,0 @@
-[27-Oct-2014 17:02:51] PHP Warning:  pg_connect() [<a href='function.pg-connect'>function.pg-connect</a>]: Unable to connect to PostgreSQL server: could not translate host name &quot;d6i1ehn8ve7f2c&quot; to address: Name or service not known in /home1/sglrsx/public_html/conexion_db.php on line 11
-[27-Oct-2014 17:02:51] PHP Warning:  pg_last_error() [<a href='function.pg-last-error'>function.pg-last-error</a>]: No PostgreSQL link opened yet in /home1/sglrsx/public_html/conexion_db.php on line 11
