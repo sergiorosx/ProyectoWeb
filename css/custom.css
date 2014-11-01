@@ -16,17 +16,16 @@ body, h1, h2, h3, h4, h5, h6 {
 
 .intro-header {
 	/* padding-bottom: 50px; #f8f8f8*/
-	color: #A4A4A4;
+	color: #FFFFFF;
 	background: url(../img/img3.jpg) no-repeat center center;
 	background-size: cover;
 	text-align: center;
-	height: 600px;
+	/*height: 600px;*/
 	margin-bottom: 0px;
 }
 
 #message {
-	margin-top: 360px;
-	color:#ffffff;
+	/*margin-top: 360px;*/
 }
 
 /*

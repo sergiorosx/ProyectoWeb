@@ -11,8 +11,8 @@
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.css" rel="stylesheet">
-	  <!--botones redes sociales-->
-	  <link href="css/bootstrap-social.css" rel="stylesheet" >
+	<!--botones redes sociales-->
+	 <link href="css/bootstrap-social.css" rel="stylesheet" >
 	
     <!-- Custom Google Web Font -->
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet">
@@ -24,7 +24,7 @@
     <script src="js/jquery-1.10.2.js"></script>
     <script src="js/bootstrap.js"></script>
     <script src="js/custom.js"></script>
-    <script src="loginFacebook/loginFacebook.js"></script>
+	
 	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -34,6 +34,7 @@
 </head>
 
 <body>
+
 	<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
   <!-- Brand and toggle get grouped for better mobile display -->
   <div class="navbar-header">
@@ -73,9 +74,9 @@
 	        <input type="password" placeholder="Password" name="login_contraseña" /><br />
 	      </div>
 	      <div class="modal-footer" >
-			   <input style="float: left" type="button" class="btn btn-success" value="Iniciar Sesión" />
+			   <input style="float: left" type="button" class="btn btn-success" value="Iniciar Sesión" /> 
 	       <span style="padding-right: 12px">Iniciar sesión con:</span>
-			   <a onClick="facebookLogin()" class="btn btn-social-icon btn-facebook">
+	       <a class="btn btn-social-icon btn-facebook">
 				    <i class="fa fa-facebook"></i>
 			   </a>
 			   <a href="loginTwitterApi/loginToTwitter.php" class="btn btn-social-icon btn-twitter">
@@ -84,8 +85,8 @@
 			   </br></br>
 	       <span class="fp-link"> <a href="#">¿Olvidaste la contraseña?</a></span>
 	       </br></br>
-			   <span> ¿Todavía no te has registrado?</span>
-			   <span id="signup-link" style="cursor:pointer;" class="text-info">¡Haz click aquí!</span>
+			<span> ¿Todavía no te has registrado?</span>
+			<span id="signup-link" style="cursor:pointer;" class="text-info">¡Haz click aquí!</span>
 	      </div>
 	    </div><!-- /.modal-content -->
 	  </div><!-- /.modal-dialog -->
