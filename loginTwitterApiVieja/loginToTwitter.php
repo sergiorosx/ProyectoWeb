@@ -16,11 +16,7 @@ mediante la function header de php
 	include('keyTwitter.php'); 
 	$twitterObj = new EpiTwitter($consumer_key, $consumer_secret); 
 	$authenticateUrl = $twitterObj->getAuthenticateUrl();
-<<<<<<< HEAD
-	header('Location: '.$authenticateUrl.'');
-=======
 
 	header('Location: '.$authenticateUrl.'');
 
->>>>>>> origin/master
-?>
+?> 

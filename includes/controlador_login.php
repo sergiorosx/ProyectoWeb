@@ -17,12 +17,20 @@ Function login ($correo, $pss) {
 }
 
 Function login_facebook () {
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/master
 }
 
 Function login_twitter ($correo) {
 
 }
 
+<<<<<<< HEAD
 //login('sergio.garcia@correounivalle.edu.co', 'univalle123');
 ?>
+=======
+login('sergio.garcia@correounivalle.edu.co', 'univalle123');
+?>
+>>>>>>> origin/master
