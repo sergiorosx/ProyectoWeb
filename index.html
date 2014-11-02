@@ -10,21 +10,21 @@
     <title>Ideas UV - Universidad del Valle</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="vista/web/css/bootstrap.css" rel="stylesheet">
 	  <!--botones redes sociales-->
-	  <link href="css/bootstrap-social.css" rel="stylesheet" >
+	  <link href="vista/web/css/bootstrap-social.css" rel="stylesheet" >
 	
     <!-- Custom Google Web Font -->
-    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="vista/web/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic' rel='stylesheet' type='text/css'>
 
     <!-- Add custom CSS here -->
-    <link href="css/custom.css" rel="stylesheet">
+    <link href="vista/web/css/custom.css" rel="stylesheet">
 	<!-- JavaScript -->
-    <script src="js/jquery-1.10.2.js"></script>
-    <script src="js/bootstrap.js"></script>
-    <script src="js/custom.js"></script>
-    <script src="loginFacebook/loginFacebook.js"></script>
+    <script src="vista/web/js/jquery-1.10.2.js"></script>
+    <script src="vista/web/js/bootstrap.js"></script>
+    <script src="vista/web/js/custom.js"></script>
+    <script src="vista/web/loginFacebook/loginFacebook.js"></script>
 	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -65,12 +65,14 @@
 	        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 	        <h4 class="modal-title" id="myModalLabel1">Inicio de Sesión</h4>
 	      </div>
+        <form action>
 	      <div class="modal-body" id="login_details">
-	        <span> ¿Ya tienes una cuenta? </span> </br></br>
+	        <span> ¿Ya tienes una cuenta? </span> <br /></br>
 	        <span style="font-weight:bold;">*Correo</span><br />
-	        <input type="email" placeholder="example@correounivalle.edu.co" name="login_correo" /><br /></br>
+	        <input type="email" placeholder="example@correounivalle.edu.co" name="login_correo" /><br /><br />
 	        <span style="font-weight:bold;" >*Contraseña</span><br />
 	        <input type="password" placeholder="Password" name="login_contraseña" /><br />
+          <span id="errorLogin"></span><br />
 	      </div>
 	      <div class="modal-footer" >
 			   <input style="float: left" type="button" class="btn btn-success" value="Iniciar Sesión" />
@@ -79,7 +81,7 @@
 				    <i class="fa fa-facebook"></i>
 			   </a>
          <!--loginTwitterApi/loginToTwitter.php-->
-			   <a href="loginTwitter/redirect.php" class="btn btn-social-icon btn-twitter">
+			   <a href="vista/web/loginTwitter/redirect.php" class="btn btn-social-icon btn-twitter">
 				    <i class="fa fa-twitter"></i>
 			   </a>
 			   </br></br>
@@ -88,6 +90,7 @@
 			   <span> ¿Todavía no te has registrado?</span>
 			   <span id="signup-link" style="cursor:pointer;" class="text-info">¡Haz click aquí!</span>
 	      </div>
+        </form>
 	    </div><!-- /.modal-content -->
 	  </div><!-- /.modal-dialog -->
 	</div><!-- /.modal -->
@@ -143,7 +146,7 @@
                     <p class="lead">Ideas UV es una aplicacion Web de la Universidad del Valle que permite a la comunidad universitaria aportar posibles soluciones a un problema en el marco de un concurso de ideas que se consolidan como propuestas y son sometidas a votacion. Tambien participa un grupo de expertos o jurados, los cuales evaluan si las mejores porpuestas son viables y son estos los que elijen la mejor propuesta de acuerdo a unos criterios establecidos.</p>
                 </div>
                 <div class="col-lg-5 col-lg-offset-2 col-sm-6">
-                    <img class="img-responsive" src="img/ipad.jpg" alt="">
+                    <img class="img-responsive" src="vista/web/img/ipad.jpg" alt="">
                 </div>
             </div>
         </div><!-- /.container -->
