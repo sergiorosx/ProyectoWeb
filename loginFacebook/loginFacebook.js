@@ -1,7 +1,7 @@
 // This is called with the results from from FB.getLoginStatus().
 function statusChangeCallback(response) {
-	console.log('statusChangeCallback');
-	console.log(response);
+	//console.log('statusChangeCallback');
+	//console.log(response);
 	// The response object is returned with a status field that lets the
 	// app know the current login status of the person.
 	// Full docs on the response object can be found in the documentation
@@ -63,9 +63,9 @@ window.fbAsyncInit = function() {
 	//    your app or not.
 	//
 	// These three cases are handled in the callback function.
-	FB.getLoginStatus(function(response) {
+	/*FB.getLoginStatus(function(response) {
 		statusChangeCallback(response);
-	});
+	});*/
 };
 
 
@@ -88,6 +88,7 @@ function testAPI() {
 	console.log('Welcome!  Fetching your information.... ');
 	FB.api('/me', function(response) {
 	  	console.log('Successful login for: ' + response.name + '  ' + response.email);
+	  	alert('Successful login for: ' + response.name + '  ' + response.email);
 	  	//document.getElementById('status').innerHTML = 'Bienvenido ' + response.name + '!'; // esto es seteo del html
 	  	// llamar al controlador de php y enviarle response.name y response.email
 	});
