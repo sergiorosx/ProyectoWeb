@@ -1,0 +1,4 @@
+Archivo de prueba de sincronización hacia el equipo.
+Más lineas tontas.
+Muchas más.
+Listo.
