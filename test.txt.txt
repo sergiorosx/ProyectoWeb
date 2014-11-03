@@ -1,2 +1,0 @@
-Probando cómo hacer un commit en SourceTree.
-Modificando para hacer la explicación.
