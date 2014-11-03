@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-	<link href='vista\web\img\LogoIdeasUV.jpg' rel='shortcut icon' type='image/png'>
+	  <link href='vista\web\img\LogoIdeasUV.jpg' rel='shortcut icon' type='image/png'>
 
     <title>Ideas UV - Universidad del Valle</title>
 
@@ -21,17 +21,17 @@
 
     <!-- Add custom CSS here -->
     <link href="vista/web/css/custom.css" rel="stylesheet">
-	<!-- JavaScript -->
+	  <!-- JavaScript -->    
     <script src="vista/web/js/jquery-1.10.2.js"></script>
     <script src="vista/web/js/bootstrap.js"></script>
     <script src="vista/web/js/custom.js"></script>
     <script src="vista/web/loginFacebook/loginFacebook.js"></script>
-	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
+      <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
+      <![endif]-->
 </head>
 
 <body>
@@ -66,32 +66,30 @@
 	        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 	        <h4 class="modal-title" id="myModalLabel1">Inicio de Sesión</h4>
 	      </div>
-        <form>
 	      <div class="modal-body" id="login_details">
-	        <span> ¿Ya tienes una cuenta? </span> <br /></br>
-	        <span style="font-weight:bold;">*Correo</span><br />
-	        <input type="email" placeholder="example@correounivalle.edu.co" name="login_correo" /><br /><br />
-	        <span style="font-weight:bold;" >*Contraseña</span><br />
-	        <input type="password" placeholder="Password" name="login_contraseña" /><br />
-          <span id="errorLogin"></span><br />
+  	        <span> ¿Ya tienes una cuenta? </span> <br /></br>
+  	        <span style="font-weight:bold;">*Correo</span><br />
+  	        <input type="email" placeholder="example@correounivalle.edu.co" name="login_correo" /><br /><br />
+  	        <span style="font-weight:bold;" >*Contraseña</span><br />
+  	        <input type="password" placeholder="Password" name="login_contraseña" /><br />
+            <span id="error_Login"></span><br />
 	      </div>
 	      <div class="modal-footer" >
-			   <input style="float: left" type="button" class="btn btn-success" value="Iniciar Sesión" />
-	       <span style="padding-right: 12px">Iniciar sesión con:</span>
-			   <a onClick="facebookLogin()" class="btn btn-social-icon btn-facebook">
-				    <i class="fa fa-facebook"></i>
-			   </a>
-         <!--loginTwitterApi/loginToTwitter.php-->
-			   <a href="vista/web/loginTwitter/redirect.php" class="btn btn-social-icon btn-twitter">
-				    <i class="fa fa-twitter"></i>
-			   </a>
-			   </br></br>
-	       <span class="fp-link"> <a href="#">¿Olvidaste la contraseña?</a></span>
-	       </br></br>
-			   <span> ¿Todavía no te has registrado?</span>
-			   <span id="signup-link" style="cursor:pointer;" class="text-info">¡Haz click aquí!</span>
+  			    <input style="float: left" type="button" class="btn btn-success" value="Iniciar Sesión" />
+  	        <span style="padding-right: 12px">Iniciar sesión con:</span>
+  			    <a onClick="facebookLogin()" class="btn btn-social-icon btn-facebook">
+  				    <i class="fa fa-facebook"></i>
+  			    </a>
+            <!--loginTwitterApi/loginToTwitter.php-->
+  			    <a href="vista/web/loginTwitter/redirect.php" class="btn btn-social-icon btn-twitter">
+  				    <i class="fa fa-twitter"></i>
+  			    </a>
+  			    </br></br>
+  	        <span class="fp-link"> <a href="#">¿Olvidaste la contraseña?</a></span>
+  	        </br></br>
+  			    <span> ¿Todavía no te has registrado?</span>
+  			    <span id="signup-link" style="cursor:pointer;" class="text-info">¡Haz click aquí!</span>
 	      </div>
-        </form>
 	    </div><!-- /.modal-content -->
 	  </div><!-- /.modal-dialog -->
 	</div><!-- /.modal -->
@@ -108,17 +106,23 @@
 	      <div class="modal-body" id="signup_details">
 	        <span >*Nombre Completo</span>
 	        <input type="text" placeholder="Escriba su nombre completo" name="registro_nombre" /> </br></br>
-                <span >*Correo institucional</span>
+          <span >*Correo institucional</span>
 	        <input type="email" placeholder="example@coreounivalle.edu.co" name="registro_correo" /></br></br>
-                <span >*Alias</span>
-                <input type="text" name="registro_nick" /> </br></br>
+          <span >*Alias</span>
+          <input type="text" name="registro_nick" /> </br></br>
 	        <span >*Contraseña</span>
-	        <input type="password" placeholder="Escriba su contraseña" name="registro_contraseña" /></br></br>
+	        <input type="password" placeholder="Escriba su contraseña" name="registro_contrasenia" /></br></br>
 	        <span >*Repetir contraseña</span>
-	        <input type="password" placeholder="Repita su contraseña" name="re_register_password" />
+	        <input type="password" placeholder="Repita su contraseña" name="re_reg_contrasenia" /> </br></br>
+          <span >Correo de facebook (opcional)</span>
+          <input type="email" placeholder="example@example.com" name="registro_face" /> </br></br>
+          <span >Usuario Twitter (opcional)</span>
+          <input type="text" placeholder="username" name="registro_twitter" /> </br></br>
+          <span>* Campos obligatorios</span>
+          <span id="error_registro"></span>
 	      </div>
 	      <div class="modal-footer" >
-      		<input style="float: left" type="button" class="btn btn-success"  value="Registrarme" action=/> 
+      		<input style="float: left" type="button" class="btn btn-success" value="Registrarme" name="Registrarme" id="registro"/> 
 	        <span>&nbsp;&nbsp;&nbsp; ¿Ya eres miembro? </span><span id="login-link" class="text-info" style="cursor:pointer;">  ¡Inicia ahora!  </span> 
 		    </div>
 	    </div><!-- /.modal-content -->

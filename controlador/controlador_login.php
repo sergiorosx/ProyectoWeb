@@ -1,7 +1,15 @@
 <?php
-include 'conexiondb.php';
+include 'modelo/usuario.php';
 
-Function login ($correo, $pss) {
+// veifica si se envio un formulario de registro
+if (isset($POST['Registrarme'])){
+	echo "Registrado";
+}
+
+echo "Ya Existe";
+
+
+private function login ($correo, $pss) {
 	$retorno = validarUsuarioUnivalle($correo, $pss);
 	
 	if($retorno != "False") {
@@ -15,22 +23,4 @@ Function login ($correo, $pss) {
 	// setear span en html mostrando error
 	}
 }
-
-Function login_facebook () {
-<<<<<<< HEAD
-
-=======
->>>>>>> origin/master
-}
-
-Function login_twitter ($correo) {
-
-}
-
-<<<<<<< HEAD
-//login('sergio.garcia@correounivalle.edu.co', 'univalle123');
 ?>
-=======
-login('sergio.garcia@correounivalle.edu.co', 'univalle123');
-?>
->>>>>>> origin/master

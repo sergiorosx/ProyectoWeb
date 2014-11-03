@@ -58,6 +58,33 @@ $(document).ready(function(){
 	        log: function() { }
 	    };
 	}
-	 
-})
 
+
+	// Ajax para registro de usuario
+	$("input#registro").click(function(){
+        $.ajax({
+            type: "POST",
+            url: "../controlador/controlador_login.php", //process to mail
+            data: $('form.contact').serialize(),
+            success: function(msg){
+            	/*
+                $("#thanks").html(msg) //hide button and show thank you
+                $("#form-content").modal('hide'); //hide popup
+                */
+                if (msg == "Registrado") {
+                	alert("te has registrado con exito");
+                }
+                else if (msg == "Ya existe") {
+                	alert("ya estas registrado, completa tus datos");
+                }
+                else {
+                	alert("algo ocurrio");
+                }
+            },
+            error: function(){
+                alert("failure");
+            }
+        });
+    });
+	
+});
