@@ -1,8 +1,3 @@
 <?php
-
-class usuario {
-
-private 
-
-}
+echo 'crear clase';
 ?>
