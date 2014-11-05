@@ -9,31 +9,31 @@ if(!isset($_SERVER['HTTP_X_REQUESTED_WITH']) AND strtolower($_SERVER['HTTP_X_REQ
     ));
     die($output); //exit script outputting json data
 }
-/*
-//Sanitize input data using PHP filter_var().
-$correo     = filter_var($_POST["correo"], FILTER_SANITIZE_EMAIL);
-$contrasena   = filter_var($_POST["contrasenia"], FILTER_SANITIZE_NUMBER_INT);
-
-//additional php validation
-if(!filter_var($correo, FILTER_VALIDATE_EMAIL)){ //email validation
-    $output = json_encode(array('type'=>'error', 'text' => 'Please enter a valid email!'));
-	die($output);
-}
-//validar que sea correo univalle
-// pendiente validacoin del password, evitar sql injection y longitud minima
-*/
-
 
 // INICIO DE SESION POR BASE DE DATOS TRANSACCIONAL
-if ( isset($_POST['correo']) && isset($POST['contrasenia']) ) {
-	$output = json_encode(array('type'=>'message', 'text' => 'entra formulario login'));
-}
+if ( isset($_POST['correo']) && isset($_POST['contrasena']) ) {
+	$output = json_encode(array('type'=>'message', 'text' => 'entra formulario login php'));
+	die($output);
+}// REGISTRO DE USUARIO
+elseif (isset($_POST['nombre']) 		&& isset($_POST['correoUV'])	&&
+		isset($_POST['alias']) 			&& isset($_POST['contrasena']) 	&&
+		isset($_POST['valcontrasena']) 	&& isset($_POST['correoFB']) 		&&
+		isset($_POST['usuarioTw'])) {
 
-// REGISTRO DE USUARIO
-else if (isset($_POST['registro_nombre']) && isset($_POST['registro_correo']) && 
-	isset($_POST['registro_nick']) && isset($_POST['registro_contrasenia']) && 
-	isset($_POST['re_reg_contrasenia']) && isset($_POST['registro_face']) &&
-	isset($_POST['reistro_twitter'])) {
+	//Sanitize input data using PHP filter_var().
+	$correo     = filter_var($_POST["correo"], FILTER_SANITIZE_EMAIL);
+	$contrasena   = filter_var($_POST["contrasenia"], FILTER_SANITIZE_NUMBER_INT);
+
+	//additional php validation
+	if(!filter_var($correo, FILTER_VALIDATE_EMAIL)){ //email validation
+	    $output = json_encode(array('type'=>'error', 'text' => 'Ingrese un correo valido!'));
+		die($output);
+	}
+	//validar que sea correo univalle
+	// pendiente validacoin del password, evitar sql injection y longitud minima
+
+	$output = json_encode(array('type'=>'message', 'text' => 'entra formulario registro php'));
+	die($output);
 	/*
 	// validar campos
 	$nombre = $_POST['registro_nombre'];
@@ -43,17 +43,10 @@ else if (isset($_POST['registro_nombre']) && isset($_POST['registro_correo']) &&
 	$valcontrsenia = $_POST['re_reg_contrasenia'];
 	$facebook = $_POST['registro_face'];
 	$twitter = $_POST['registro_twitter'];
-
-	// campos vacios
-	if (empty()) {
-
-	}
-	else {
-		echo "Registrado";
-	}
 	*/
 }
 else {
-	echo "";
+	$output = json_encode(array('type'=>'error', 'text' => 'No entro a ninun formulario'));
+	die($output);
 }
 ?>

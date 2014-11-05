@@ -1,4 +1,4 @@
-$(document).ready(function(){
+$(document).ready(function() {
 	
 	$(".loginpopup").bind("click", function() {
 		$('#login').modal('toggle');
@@ -60,48 +60,44 @@ $(document).ready(function(){
 	}
 
 
-
 	// Ajax para login de usuario
 	$("input#ingresar").click(function() {
+        // se limpia el error anterior
+        $('#error_login').html('');
 
 		// validacion de campos
 		var validado = true;
 		
-		$( "#formlogin input[required=true]").each(function(){
-            
+		$("#formlogin input[required=true]").each(function(){
             if(!$.trim($(this).val())) { //if this field is empty
-            	// mostrar mensajes de error adicionales
                 validado = false; //set do not proceed flag
             }
-            
             //check invalid email
             var email_reg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
             if($(this).attr("type")=="email" && !email_reg.test($.trim($(this).val()))) {
             	// mostrar mensajes de error adicionales
                 validado = false; //set do not proceed flag
+                $('#error_login').html('<br/>* Error: correo invalido');
             }
         });
 
-
-		if(validado) //everything looks good! proceed...
-        {	
+        //everything looks good! proceed...
+		if(validado) {	
             //get input field values data to be sent to server
             post_data = {
-                'correo'     : $('input[name=login_correo]').val(),
-                'contrasenia'    : $('input[name=login_contrasenia]').val()
+                'correo'        : $('input[name=login_correo]').val(),
+                'contrasena'      : $('input[name=login_contrasenia]').val()
             };
-           
             //Ajax post data to server controlador_login.php
-            $.post('controlador_login.php', post_data, function(response){  
+            $.post('controlador/controlador_login.php', post_data, function(response) {  
+                //console.log('entra a ajax ' +  response.type + "->" + response.text);
                 if(response.type == 'error'){ //load json data from server and output message    
-                    output = '<div class="error">' + response.text + '</div>';
-                } else{
-                    output = '<div class="success">' + response.text + '</div>';
-                    //reset values in all input fields
-                    $("#contact_form  input[required=true], #contact_form textarea[required=true]").val('');
-                    $("#contact_form #contact_body").slideUp(); //hide form after success
+                    //console.log('errror ' +  response.type + "->" + response.text);
+                    $('#error_login').html('* ' + response.text);
+                } else {
+                    //console.log('No hay error ' +  response.type + "->" + response.text);
+                    $('#login').modal('hide'); //hide form after success
                 }
-                $("#contact_form #contact_results").hide().html(output).slideDown();
             }, 'json');
         }
     });
@@ -110,53 +106,48 @@ $(document).ready(function(){
 
 	// Ajax para registro de usuario
 	$("input#registro").click(function() {
-
+        //se limpia el error anterior
+        $('#error_registro').html('');
+        
 		// validacion de campos
 		var validado = true;
 		
 		$( "#formregistro input[required=true]").each(function(){
-            
             if(!$.trim($(this).val())) { //if this field is empty
-            	// mostrar mensajes de error adicionales
                 validado = false; //set do not proceed flag
             }
-            
             //check invalid email
             var email_reg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
             if($(this).attr("type")=="email" && !email_reg.test($.trim($(this).val()))) {
-            	// mostrar mensajes de error adicionales
                 validado = false; //set do not proceed flag
+                $('#error_registro').html('<br/>* Error: correo invalido');
             }
 		});
 
-
-		if(validado) //everything looks good! proceed...
-        {	
-        	alert('datos de registro validados');
+        //everything looks good! proceed...
+		if(validado) {	
+        	
             //get input field values data to be sent to server
             post_data = {
-                'nombre'     : $('input[name=registro_nombre]').val(),
-                'correoUV'    : $('input[name=registro_correo]').val(),
-                'alias' : $('input[name=registro_nick]').val(),
-                'contrasenia' : $('input[name=registro_contrasenia]').val(),
-                'valcontrasenia' : $('input[name=registro_valcontrasenia]').val(),
-                'correoFB' : $('input[name=registro_face]').val(),
-                'usuarioTw' : $('input[name=registro_registrotwitter]').val()
+                'nombre'     	: $('input[name=registro_nombre]').val(),
+                'correoUV'    	: $('input[name=registro_correo]').val(),
+                'alias' 		: $('input[name=registro_nick]').val(),
+                'contrasena' 	: $('input[name=registro_contrasenia]').val(),
+                'valcontrasena'	: $('input[name=re_reg_contrasenia]').val(),
+                'correoFB' 		: $('input[name=registro_face]').val(),
+                'usuarioTw' 	: $('input[name=registro_twitter]').val()
             };
-/*
+            
             //Ajax post data to server controlador_login.php
-            $.post('controlador_login.php', post_data, function(response){  
+            $.post('controlador/controlador_login.php', post_data, function(response) {  
                 if(response.type == 'error'){ //load json data from server and output message    
-                    output = '<div class="error">' + response.text + '</div>';
-                } else{
-                    output = '<div class="success">' + response.text + '</div>';
-                    //reset values in all input fields
-                    $("#contact_form  input[required=true], #contact_form textarea[required=true]").val('');
-                    $("#contact_form #contact_body").slideUp(); //hide form after success
+                    console.log('error ' + response.type + " " + response.text);
+                    $('#error_registro').html('* ' + response.text);
+                } else {
+                	console.log('No hay error ' + response.type + " " + response.text);
+                    $("#signup").modal('hide'); //hide form after success
                 }
-                $("#contact_form #contact_results").hide().html(output).slideDown();
-            }, 'json');*/
+            }, 'json');
         }
     });
-
 });
