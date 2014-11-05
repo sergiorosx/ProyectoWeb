@@ -6,7 +6,7 @@ CREATE TABLE usuario (
 	correoFacebook VARCHAR(80) NULL,
 	usuarioTwitter VARCHAR(40) NULL,
 	rol VARCHAR(20) NOT NULL,
-	tipoDoc VARCHAR(3) NULL,	
+	tipoDoc VARCHAR(3) NULL,
 	numDoc VARCHAR(20) NULL,
 	numCel VARCHAR(20) NULL,
 	PRIMARY KEY(alias, correoUnivalle)

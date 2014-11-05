@@ -90,6 +90,6 @@ function testAPI() {
 	  	console.log('Successful login for: ' + response.name + '  ' + response.email);
 	  	alert('Successful login for: ' + response.name + '  ' + response.email);
 	  	//document.getElementById('status').innerHTML = 'Bienvenido ' + response.name + '!'; // esto es seteo del html
-	  	// llamar al controlador de php y enviarle response.name y response.email
+	  	// llamar a un metodo de custom js y enviarle estos datos, en custom hacer ajax en el metodo y pasarselos a controlador
 	});
 }

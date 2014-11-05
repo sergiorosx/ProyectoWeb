@@ -1,5 +1,5 @@
 <?php
-//require './modelo/usuario.php';
+require '../modelo/usuario.php';
 
 //check if its an ajax request, exit if not
 if(!isset($_SERVER['HTTP_X_REQUESTED_WITH']) AND strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) != 'xmlhttprequest') {  
@@ -32,9 +32,10 @@ elseif (isset($_POST['nombre']) 		&& isset($_POST['correoUV'])	&&
 	//validar que sea correo univalle
 	// pendiente validacoin del password, evitar sql injection y longitud minima
 
+
 	$output = json_encode(array('type'=>'message', 'text' => 'entra formulario registro php'));
 	die($output);
-	/*
+	
 	// validar campos
 	$nombre = $_POST['registro_nombre'];
 	$correo = $_POST['registro_correo'];
@@ -43,7 +44,7 @@ elseif (isset($_POST['nombre']) 		&& isset($_POST['correoUV'])	&&
 	$valcontrsenia = $_POST['re_reg_contrasenia'];
 	$facebook = $_POST['registro_face'];
 	$twitter = $_POST['registro_twitter'];
-	*/
+	/**/
 }
 else {
 	$output = json_encode(array('type'=>'error', 'text' => 'No entro a ninun formulario'));

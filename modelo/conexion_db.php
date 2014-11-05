@@ -110,9 +110,9 @@ function validarUsuarioTwitter($usuarioTwitter){
 }
 
 //conexion_bd();
-crearUsuario('sergiogl', 'univalle123', 'Sergio Garcia', 'sergio.garcia@correounivalle.edu.co', 'sergiorosx@hotmail.com', 'sergiorosx','Participante','','','');
-crearUsuario('sergio.garcia', 'unamascontra', 'Sergio Garcia', 'sergio.garcia@correounivalle.edu.co', 'sergiorosx@hotmail.com', 'sergiorosx','Administrador','','','');
-crearUsuario('juancamilo', 'otracontra', 'Juan Camilo Lopez', 'juan.camilo.lopez@correounivalle.edu.co', '','','Participante','','','');
+//crearUsuario('sergiogl', 'univalle123', 'Sergio Garcia', 'sergio.garcia@correounivalle.edu.co', 'sergiorosx@hotmail.com', 'sergiorosx','Participante','','','');
+//crearUsuario('sergio.garcia', 'unamascontra', 'Sergio Garcia', 'sergio.garcia@correounivalle.edu.co', 'sergiorosx@hotmail.com', 'sergiorosx','Administrador','','','');
+//crearUsuario('juancamilo', 'otracontra', 'Juan Camilo Lopez', 'juan.camilo.lopez@correounivalle.edu.co', '','','Participante','','','');
 //validarUsuarioUnivalle('sergio.garcia@correounivalle.edu.co', 'univalle123');
 //validarUsuarioFacebook('sergiorosx@hotmail.com');
 //validarUsuarioTwitter('sergiorosx');

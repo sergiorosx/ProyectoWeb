@@ -59,6 +59,11 @@ $(document).ready(function() {
 	    };
 	}
 
+    //Ajax login con facebook
+    function loginFacebook (nombre, correo) {
+        // hacer ajax 
+    }
+
 
 	// Ajax para login de usuario
 	$("input#ingresar").click(function() {
