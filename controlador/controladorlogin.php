@@ -12,8 +12,23 @@ if(!isset($_SERVER['HTTP_X_REQUESTED_WITH']) AND strtolower($_SERVER['HTTP_X_REQ
 
 // INICIO DE SESION POR BASE DE DATOS TRANSACCIONAL
 if ( isset($_POST['correo']) && isset($_POST['contrasena']) ) {
-	$output = json_encode(array('type'=>'message', 'text' => 'entra formulario login php'));
-	die($output);
+
+	//Sanitize input data using PHP filter_var().
+	$correo     = filter_var($_POST["correo"], FILTER_SANITIZE_EMAIL);
+	$contrasena   = filter_var($_POST["contrasena"], FILTER_SANITIZE_NUMBER_INT);
+
+	// se consulta el usuario
+	$Usuario = new Usuario();
+	if ($Usuario->validarUsuario()) {
+		// el usuario existe
+		$output = json_encode(array('type'=>'message', 'text' => 'Login'));
+		die($output);
+	}
+	else {
+		// el usuario no existe
+		$output = json_encode(array('type'=>'error', 'text' => 'el usuario no existe'));
+		die($output);
+	}
 }// REGISTRO DE USUARIO
 elseif (isset($_POST['nombre']) 		&& isset($_POST['correoUV'])	&&
 		isset($_POST['alias']) 			&& isset($_POST['contrasena']) 	&&
@@ -22,7 +37,7 @@ elseif (isset($_POST['nombre']) 		&& isset($_POST['correoUV'])	&&
 
 	//Sanitize input data using PHP filter_var().
 	$correo     = filter_var($_POST["correo"], FILTER_SANITIZE_EMAIL);
-	$contrasena   = filter_var($_POST["contrasenia"], FILTER_SANITIZE_NUMBER_INT);
+	$contrasena   = filter_var($_POST["contrasena"], FILTER_SANITIZE_NUMBER_INT);
 
 	//additional php validation
 	if(!filter_var($correo, FILTER_VALIDATE_EMAIL)){ //email validation
@@ -32,19 +47,8 @@ elseif (isset($_POST['nombre']) 		&& isset($_POST['correoUV'])	&&
 	//validar que sea correo univalle
 	// pendiente validacoin del password, evitar sql injection y longitud minima
 
-
 	$output = json_encode(array('type'=>'message', 'text' => 'entra formulario registro php'));
 	die($output);
-	
-	// validar campos
-	$nombre = $_POST['registro_nombre'];
-	$correo = $_POST['registro_correo'];
-	$nick = $_POST['registro_nick'];
-	$contrasenia = $_POST['registro_contrasenia'];
-	$valcontrsenia = $_POST['re_reg_contrasenia'];
-	$facebook = $_POST['registro_face'];
-	$twitter = $_POST['registro_twitter'];
-	/**/
 }
 else {
 	$output = json_encode(array('type'=>'error', 'text' => 'No entro a ninun formulario'));

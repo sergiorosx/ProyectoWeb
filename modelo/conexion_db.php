@@ -39,23 +39,25 @@ function validarUsuarioUnivalle($correoUV, $pwd){
 	$pwd = base64_encode($pwd);
 	$consulta = "SELECT alias, nombre_completo, rol FROM usuario WHERE correoUnivalle = '$correoUV' AND contrasenia = '$pwd'";
 	$resultado = pg_query($conexion, $consulta) or die ('La consulta falló por el siguiente error: ' . pg_last_error());
-	$filas = pg_numrows($resultado);
+	//$filas = pg_numrows($resultado);
 
-	if ($filas == 0){
-    		$infousuario = "False";
+	if (!$resultado){
+    		$infousuario = null;
 	}
-	else {
+	/*else {
 		while ($line = pg_fetch_array($resultado, null, PGSQL_ASSOC)) {
     		foreach ($line as $col_value) {
-        		$infousuario .= $col_value.",";
+        		$infousuario .= $line;
     		}
 		}
-	}
+
+	}*/
 	//echo $infousuario;
+	$array = pg_fetch_array($resultado);
 	pg_freeResult($resultado);
 	pg_close($conexion);
 
-	return $infousuario;
+	return $array;
 }
 
 function ValidarUsuarioFacebook($correoFace){
@@ -116,5 +118,4 @@ function validarUsuarioTwitter($usuarioTwitter){
 //validarUsuarioUnivalle('sergio.garcia@correounivalle.edu.co', 'univalle123');
 //validarUsuarioFacebook('sergiorosx@hotmail.com');
 //validarUsuarioTwitter('sergiorosx');
-echo 'ok';
 ?>

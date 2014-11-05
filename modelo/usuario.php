@@ -15,8 +15,16 @@ class Usuario {
 	var $numcel;
 
 	function validarUsuario ($correouv, $contrasena) {
-		$usuarios = validarUsuarioUnivalle($correouv, $contrasena);
-		echo ''. $usuarios;
+		$usuario = validarUsuarioUnivalle($correouv, $contrasena);
+		if ($usuario == null) {
+			return false;
+		}
+		else {
+			$this->alias = $usuario[0];
+			$this->nombre = $usuario[1];
+			$this->rol = $usuario[2];
+			return true;
+		}
 	}
 
 	function crearUsuario ($alias, $contrasena, $nombre, $correouv, $correofb, $usuariotw, $rol, $tipodoc, $numdoc, $numcel) {
@@ -30,6 +38,9 @@ class Usuario {
 		$this->tipodoc = $tipodoc;
 	}
 }
-
-validarUsuario('sergio.garcia@correounivalle.edu.co', 'univalle123');
+/*
+$Usuario = new Usuario();
+$Usuario->validarUsuario('sergio.garcia@correounivalle.edu.co', 'univalle123');
+$Usuario->validarUsuario('sergio.garcia@correounivalle.edu.co', 'univa');
+*/
 ?>

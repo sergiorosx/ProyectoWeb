@@ -66,7 +66,7 @@ $(document).ready(function() {
 
 
 	// Ajax para login de usuario
-	$("input#ingresar").click(function() {
+	$("#formlogin").submit(function() {
         // se limpia el error anterior
         $('#error_login').html('');
 
@@ -85,22 +85,25 @@ $(document).ready(function() {
                 $('#error_login').html('<br/>* Error: correo invalido');
             }
         });
-
+        console.log('valida');
         //everything looks good! proceed...
 		if(validado) {	
+            
+            /**/
             //get input field values data to be sent to server
             post_data = {
                 'correo'        : $('input[name=login_correo]').val(),
                 'contrasena'      : $('input[name=login_contrasenia]').val()
             };
+            console.log('validado');
             //Ajax post data to server controlador_login.php
-            $.post('controlador/controlador_login.php', post_data, function(response) {  
-                //console.log('entra a ajax ' +  response.type + "->" + response.text);
+            $.post('controladorlogin.php', post_data, function(response) {  
+                console.log('entra a ajax ' +  response.type + "->" + response.text);
                 if(response.type == 'error'){ //load json data from server and output message    
-                    //console.log('errror ' +  response.type + "->" + response.text);
-                    $('#error_login').html('* ' + response.text);
+                    console.log('errror ' +  response.type + "->" + response.text);
+                    $('#error_login').html('* Error: ' + response.text);
                 } else {
-                    //console.log('No hay error ' +  response.type + "->" + response.text);
+                    console.log('No hay error ' +  response.type + "->" + response.text);
                     $('#login').modal('hide'); //hide form after success
                 }
             }, 'json');
@@ -110,7 +113,7 @@ $(document).ready(function() {
 
 
 	// Ajax para registro de usuario
-	$("input#registro").click(function() {
+	$("#formregistro").submit(function() {
         //se limpia el error anterior
         $('#error_registro').html('');
         
