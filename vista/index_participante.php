@@ -1,3 +1,15 @@
+<?php
+session_start();
+// El session_start(); ya estaría iniciado en tu script "padre" .. Si se llama directo .. ni se accederá a $_SESSION por ende no existirá y se redireccionará hacia tu página que indiques (puedes usar rutas [url]http://www.tal.tal[/url] por si llamasen al script desde otros sitios ... 
+if (!isset($_SESSION['autorizado'])){ 
+	header ("Location: http://ideasuv.heliohost.org	"); 
+	exit;
+}
+if ($_SESSION['rol'] != 'Participante') {
+	header ("Location: http://ideasuv.heliohost.org"); 
+	exit;
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 

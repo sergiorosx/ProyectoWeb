@@ -120,6 +120,7 @@ $(document).ready(function() {
 					else if (response.role == 'Administrador'){
 						console.log('redireccion administrador');
 						window.location.href = './vista/index_admin.php';
+						console.log('hizo llamado ok');
 					}
                 }
             }, 'json').fail(function() {

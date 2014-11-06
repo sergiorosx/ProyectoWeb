@@ -20,7 +20,10 @@ if ( isset($_POST['correo']) && isset($_POST['contrasena']) ) {
 	$Usuario = new Usuario();
 	// el usuario existe
 	if ($Usuario->validarUsuario($correo, $contrasena)) {
-		$_POST['alias'] = $Usuario->getAlias();
+		session_start(); 
+		$_SESSION['autorizado']=true; 
+		$_SESSION['alias'] = $Usuario->getAlias();
+		$_SESSION['rol'] = $Usuario->getRol();
 		$output = json_encode(array('type'=>'message', 'role' => $Usuario->getRol()));
 		die($output);
 	}

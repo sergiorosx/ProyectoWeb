@@ -110,7 +110,6 @@ function validarUsuarioTwitter($usuarioTwitter){
 
 	return $infousuario;
 }
-
 //conexion_bd();
 //crearUsuario('sergiogl', 'univalle123', 'Sergio Garcia', 'sergio.garcia@correounivalle.edu.co', 'sergiorosx@hotmail.com', 'sergiorosx','Participante','','','');
 //crearUsuario('sergio.garcia', 'unamascontra', 'Sergio Garcia', 'sergio.garcia@correounivalle.edu.co', 'sergiorosx@hotmail.com', 'sergiorosx','Administrador','','','');
