@@ -65,11 +65,11 @@ if ($_SESSION['rol'] != 'Jurado') {
     <ul class="nav navbar-nav navbar-right">
       <li><a href="#" class="scroll-link" data-id="">Propuestas</a></li>
       <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Welcome <strong>jurado</strong> <b class="caret"></b></a>
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">¡Bienvenido <strong><?php echo ' '.$_SESSION['alias'].'!'; ?></strong> <b class="caret"></b></a>
         <ul class="dropdown-menu">
           <li><a href="#">Mi cuenta</a></li>
           <li class="divider"></li>
-          <li><a href="#">Cerrar sesion</a></li>
+          <li><a href="logout.php">Cerrar sesion</a></li>
         </ul>
       </li>
     </ul>

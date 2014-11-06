@@ -67,11 +67,11 @@ if ($_SESSION['rol'] != 'Administrador') {
       <li><a href="#" class="scroll-link" data-id="">Usuarios</a></li>
       <li><a href="#" class="scroll-link" data-id="">Roles</a></li>
       <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Welcome <strong>admin</strong> <b class="caret"></b></a>
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">¡Bienvenido<strong><?php echo ' '.$_SESSION['alias'].'!'; ?></strong> <b class="caret"></b></a>
         <ul class="dropdown-menu">
           <li><a href="#">Mi cuenta</a></li>
           <li class="divider"></li>
-          <li><a href="#">Cerrar sesion</a></li>
+          <li><a href="logout.php">Cerrar sesion</a></li>
         </ul>
       </li>
     </ul>
