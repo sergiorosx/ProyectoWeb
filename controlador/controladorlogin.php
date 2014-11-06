@@ -15,20 +15,20 @@ if ( isset($_POST['correo']) && isset($_POST['contrasena']) ) {
 
 	//Sanitize input data using PHP filter_var().
 	$correo     = filter_var($_POST["correo"], FILTER_SANITIZE_EMAIL);
-	$contrasena   = filter_var($_POST["contrasena"], FILTER_SANITIZE_NUMBER_INT);
-
+	$contrasena = $_POST["contrasena"];
 	// se consulta el usuario
 	$Usuario = new Usuario();
-	if ($Usuario->validarUsuario()) {
-		// el usuario existe
-		$output = json_encode(array('type'=>'message', 'text' => 'Login'));
+	// el usuario existe
+	if ($Usuario->validarUsuario($correo, $contrasena)) {
+		$_POST['alias'] = $Usuario->getAlias();
+		$output = json_encode(array('type'=>'message', 'role' => $Usuario->getRol()));
 		die($output);
 	}
 	else {
 		// el usuario no existe
-		$output = json_encode(array('type'=>'error', 'text' => 'el usuario no existe'));
+		$output = json_encode(array('type'=>'error', 'text' => 'el usuario no existe '));
 		die($output);
-	}
+	}/**/
 }// REGISTRO DE USUARIO
 elseif (isset($_POST['nombre']) 		&& isset($_POST['correoUV'])	&&
 		isset($_POST['alias']) 			&& isset($_POST['contrasena']) 	&&

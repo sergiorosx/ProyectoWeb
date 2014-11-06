@@ -56,7 +56,7 @@ function validarUsuarioUnivalle($correoUV, $pwd){
 	$array = pg_fetch_array($resultado);
 	pg_freeResult($resultado);
 	pg_close($conexion);
-
+	
 	return $array;
 }
 

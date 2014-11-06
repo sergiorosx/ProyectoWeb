@@ -91,23 +91,46 @@ $(document).ready(function() {
             
             /**/
             //get input field values data to be sent to server
-            post_data = {
+            var post_data = {
                 'correo'        : $('input[name=login_correo]').val(),
-                'contrasena'      : $('input[name=login_contrasenia]').val()
+                'contrasena'    : $('input[name=login_contrasenia]').val()
             };
             console.log('validado');
-            //Ajax post data to server controlador_login.php
-            $.post('controladorlogin.php', post_data, function(response) {  
-                console.log('entra a ajax ' +  response.type + "->" + response.text);
+            //Ajax post data to server controladorlogin.php
+            $.post('./controlador/controladorlogin.php', post_data, function(response) {  
+                console.log('entra a ajax');
                 if(response.type == 'error'){ //load json data from server and output message    
                     console.log('errror ' +  response.type + "->" + response.text);
                     $('#error_login').html('* Error: ' + response.text);
                 } else {
-                    console.log('No hay error ' +  response.type + "->" + response.text);
+                    console.log('Bienvenido ' + response.role);
                     $('#login').modal('hide'); //hide form after success
+					if (response.role == 'Participante') {
+						console.log('redireccion participante');
+						window.location.href = './vista/index_participante.php';
+					}
+					else if (response.role == 'Coordinador'){
+						console.log('redireccion coordinador');
+						window.location.href = './vista/index_coordinador.php';
+					}
+					else if (response.role == 'Jurado'){
+						console.log('redireccion jurado');
+						window.location.href = './vista/index_jurado.php';
+					}
+					else if (response.role == 'Administrador'){
+						console.log('redireccion administrador');
+						window.location.href = './vista/index_admin.php';
+					}
                 }
-            }, 'json');
+            }, 'json').fail(function() {
+                // just in case posting your form failed
+                console.log( "Posting failed." );
+            });
+            // to prevent refreshing the whole page page
+            return false;
         }
+		
+		return false;
     });
 
 
@@ -147,7 +170,7 @@ $(document).ready(function() {
             };
             
             //Ajax post data to server controlador_login.php
-            $.post('controlador/controlador_login.php', post_data, function(response) {  
+            $.post('./controlador/controladorlogin.php', post_data, function(response) {  
                 if(response.type == 'error'){ //load json data from server and output message    
                     console.log('error ' + response.type + " " + response.text);
                     $('#error_registro').html('* ' + response.text);
@@ -155,7 +178,12 @@ $(document).ready(function() {
                 	console.log('No hay error ' + response.type + " " + response.text);
                     $("#signup").modal('hide'); //hide form after success
                 }
-            }, 'json');
+            }, 'json').fail(function() {
+                // just in case posting your form failed
+                console.log( "Posting failed." );
+            });
+            // to prevent refreshing the whole page page
+            return false;
         }
     });
 });

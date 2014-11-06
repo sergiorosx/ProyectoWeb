@@ -13,6 +13,18 @@ class Usuario {
 	var $tipodoc;
 	var $numdoc;
 	var $numcel;
+	
+	function getAlias () {
+		return $this->alias;
+	}
+	
+	function getNombre () {
+		return $this->nombre;
+	}
+	
+	function getRol () {
+		return $this->rol;
+	}
 
 	function validarUsuario ($correouv, $contrasena) {
 		$usuario = validarUsuarioUnivalle($correouv, $contrasena);
@@ -40,7 +52,7 @@ class Usuario {
 }
 /*
 $Usuario = new Usuario();
-$Usuario->validarUsuario('sergio.garcia@correounivalle.edu.co', 'univalle123');
-$Usuario->validarUsuario('sergio.garcia@correounivalle.edu.co', 'univa');
-*/
+//$Usuario->validarUsuario('sergio.garcia@correounivalle.edu.co', 'univalle123');
+$Usuario->validarUsuario('sergio.garcia@correounivalle.edu.co', 'univa');*/
+
 ?>
