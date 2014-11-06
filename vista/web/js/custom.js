@@ -69,6 +69,9 @@ $(document).ready(function() {
 	$("#formlogin").submit(function() {
         // se limpia el error anterior
         $('#error_login').html('');
+		
+		// se deshabilita el submit mientras se envia la info
+		$('input[type="submit"]').attr('disabled','disabled');
 
 		// validacion de campos
 		var validado = true;
@@ -76,6 +79,8 @@ $(document).ready(function() {
 		$("#formlogin input[required=true]").each(function(){
             if(!$.trim($(this).val())) { //if this field is empty
                 validado = false; //set do not proceed flag
+				// activar submit
+				$('input[type="submit"]').removeAttr('disabled');
             }
             //check invalid email
             var email_reg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
@@ -83,6 +88,8 @@ $(document).ready(function() {
             	// mostrar mensajes de error adicionales
                 validado = false; //set do not proceed flag
                 $('#error_login').html('<br/>* Error: correo invalido');
+				// activar submit
+				$('input[type="submit"]').removeAttr('disabled');
             }
         });
         console.log('valida');
@@ -102,6 +109,8 @@ $(document).ready(function() {
                 if(response.type == 'error'){ //load json data from server and output message    
                     console.log('errror ' +  response.type + "->" + response.text);
                     $('#error_login').html('* Error: ' + response.text);
+					// activar submit
+					$('input[type="submit"]').removeAttr('disabled');
                 } else {
                     console.log('Bienvenido ' + response.role);
                     $('#login').modal('hide'); //hide form after success
