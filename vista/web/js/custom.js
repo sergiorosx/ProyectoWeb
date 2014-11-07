@@ -59,12 +59,6 @@ $(document).ready(function() {
 	    };
 	}
 
-    //Ajax login con facebook
-    function loginFacebook (nombre, correo) {
-        // hacer ajax 
-    }
-
-
 	// Ajax para login de usuario
 	$("#formlogin").submit(function() {
         // se limpia el error anterior
@@ -96,7 +90,6 @@ $(document).ready(function() {
         //everything looks good! proceed...
 		if(validado) {	
             
-            /**/
             //get input field values data to be sent to server
             var post_data = {
                 'correo'        : $('input[name=login_correo]').val(),
@@ -150,18 +143,25 @@ $(document).ready(function() {
         //se limpia el error anterior
         $('#error_registro').html('');
         
+		// se deshabilita el submit mientras se envia la info
+		$('input[type="submit"]').attr('disabled','disabled');
+		
 		// validacion de campos
 		var validado = true;
 		
 		$( "#formregistro input[required=true]").each(function(){
             if(!$.trim($(this).val())) { //if this field is empty
                 validado = false; //set do not proceed flag
+				// activar submit
+				$('input[type="submit"]').removeAttr('disabled');
             }
             //check invalid email
             var email_reg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
             if($(this).attr("type")=="email" && !email_reg.test($.trim($(this).val()))) {
                 validado = false; //set do not proceed flag
                 $('#error_registro').html('<br/>* Error: correo invalido');
+				// activar submit
+				$('input[type="submit"]').removeAttr('disabled');
             }
 		});
 
@@ -184,9 +184,50 @@ $(document).ready(function() {
                 if(response.type == 'error'){ //load json data from server and output message    
                     console.log('error ' + response.type + " " + response.text);
                     $('#error_registro').html('* ' + response.text);
+					// activar submit
+					$('input[type="submit"]').removeAttr('disabled');
                 } else {
                 	console.log('No hay error ' + response.type + " " + response.text);
                     $("#signup").modal('hide'); //hide form after success
+					alert('usuario ' + response.alias + ' creado exitosamente!! Ya puede Iniciar sesion');
+					// activar submit
+					$('input[type="submit"]').removeAttr('disabled');
+                }
+            }, 'json').fail(function() {
+                // just in case posting your form failed
+                console.log( "Posting failed." );
+            });
+            // to prevent refreshing the whole page page
+            return false;
+        }
+    });
+	
+	
+	$("#formconv").submit(function() {
+        console.log('accion submit');
+		// validacion de campos
+		var validado = true;
+		
+		//everything looks good! proceed...
+		if(validado) {	
+        	
+            //get input field values data to be sent to server
+            post_data = {
+                'nombre'     	: $('input[name=nombre_convocatoria]').val(),
+                'descripcion'  	: $('textarea[name=descripcion_convocatoria]').val(),
+                'inicio' 		: $('input[name=inicio_convocatoria]').val(),
+                'fin' 			: $('input[name=fin_convocatoria]').val()
+            };
+            console.log('post data ok');
+            //Ajax post data to server controlador_login.php
+            $.post('../controlador/controladorcoordinador.php', post_data, function(response) {
+				console.log('ajax ok');
+                if(response.type == 'error'){ //load json data from server and output message    
+                    console.log('error ' + response.type + " " + response.text);
+					alert('Error ' + response.text);
+                } else {
+                	console.log('No hay error ' + response.type + " " + response.text);
+					alert('Se ha creado la convocatoria');
                 }
             }, 'json').fail(function() {
                 // just in case posting your form failed

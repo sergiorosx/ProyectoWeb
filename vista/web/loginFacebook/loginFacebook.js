@@ -88,8 +88,44 @@ function testAPI() {
 	console.log('Welcome!  Fetching your information.... ');
 	FB.api('/me', function(response) {
 	  	console.log('Successful login for: ' + response.name + '  ' + response.email);
-	  	alert('Successful login for: ' + response.name + '  ' + response.email);
-	  	//document.getElementById('status').innerHTML = 'Bienvenido ' + response.name + '!'; // esto es seteo del html
-	  	// llamar a un metodo de custom js y enviarle estos datos, en custom hacer ajax en el metodo y pasarselos a controlador
+		comprobar(response.email);
+	});
+}
+
+function comprobar(email){
+	// se deshabilita el submit mientras se envia la info
+	$('input[type="submit"]').attr('disabled','disabled');
+	var post_data = {'correoFacebook':email};
+	console.log('correoFacebook ' + email);
+	//Ajax post data to server controladorlogin.php
+	$.post('./controlador/controladorlogin.php', post_data, function(response) {  
+		console.log('entra a ajax');
+		if(response.type == 'error'){ //load json data from server and output message    
+			console.log('errror ' +  response.type + "->" + response.text);
+			$('#error_login').html('* Error: ' + response.text);
+			// activar submit
+			$('input[type="submit"]').removeAttr('disabled');	
+		} else {
+			console.log('Bienvenido ' + response.role);
+			if (response.role == 'Participante') {
+				console.log('redireccion participante');
+				window.location.href = './vista/index_participante.php';
+			}
+			else if (response.role == 'Coordinador'){
+				console.log('redireccion coordinador');
+				window.location.href = './vista/index_coordinador.php';
+			}
+			else if (response.role == 'Jurado'){
+				console.log('redireccion jurado');
+				window.location.href = './vista/index_jurado.php';
+			}
+			else if (response.role == 'Administrador'){
+				console.log('redireccion administrador');
+				window.location.href = './vista/index_admin.php';
+			}
+		}
+	}, 'json').fail(function() {
+		// just in case posting your form failed
+		console.log( "Posting failed." );
 	});
 }

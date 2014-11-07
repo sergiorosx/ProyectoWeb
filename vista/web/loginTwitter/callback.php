@@ -1,12 +1,8 @@
 <?php
-
 session_start();
 require_once('twitteroauth/twitteroauth.php');
 require_once('config.php');
-//require '../../../controlador/controladorlogin.php';
-require './controlador/controladorlogin.php'; //De esta manera lleva al directorio raiz
-
-$_POST['usertwitter'] = $usuario;
+require ('../../../modelo/usuario.php');
 
 if (isset($_REQUEST['oauth_token']) && $_SESSION['oauth_token'] !== $_REQUEST['oauth_token']) {
   $_SESSION['oauth_status'] = 'oldtoken';
@@ -23,9 +19,32 @@ unset($_SESSION['oauth_token']);
 unset($_SESSION['oauth_token_secret']);
 
 if (200 == $connection->http_code) {
-  $_SESSION['status'] = 'verified';
-  header('Location: ./index.php');
+	$_SESSION['status'] = 'verified';
+	$content = $connection->get('account/verify_credentials');
+	$usertw = $content->screen_name;
+	// se consulta el usuario
+	$Usuario = new Usuario();
+	// el usuario existe
+	if ($Usuario->validarUsuarioTw($usertw)) { 
+		$_SESSION['autorizado']=true; 
+		$_SESSION['alias'] = $Usuario->getAlias();
+		$_SESSION['rol'] = $Usuario->getRol();
+		$rol = $_SESSION['rol'];
+		
+		if ($rol == 'Participante') {
+			header('Location: ../../index_participante.php');
+		}
+		elseif ($rol == 'Coordinador') {
+			header('Location: ../../index_coordinador.php');
+		}
+		elseif ($rol == 'Jurado') {
+			header('Location: ../../index_jurado.php');
+		}
+		elseif ($rol == 'Administrador') {
+			header('Location: ../../index_admin.php');
+		}
+	}
 } else {
-  header('Location: ./clearsessions.php');
+  header('Location: ./error.html');
 }
 ?>

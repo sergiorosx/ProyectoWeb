@@ -98,8 +98,8 @@ if ($_SESSION['rol'] != 'Coordinador') {
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                         <h4 class="modal-title" id="myModalLabel1">Crear Nueva Convocatoria</h4>
                     </div>
-                    <form id="formlogin" method="post">
-                        <div class="modal-body" id="login_details">
+                    <form id="formconv" onsubmit="return false;" method="post">
+                        <div class="modal-body" id="conv_details">
                             <span style="font-weight:bold;">Nombre de la nueva convocatoria</span><br />
                             <input type="text" placeholder="Nuevo nombre" name="nombre_convocatoria" required="true" /><br /><br />
                             <span style="font-weight:bold;" >Descripción de la convocatoria</span><br />
@@ -110,7 +110,7 @@ if ($_SESSION['rol'] != 'Coordinador') {
                             <input type="date" placeholder="Día/Mes/Año" name="fin_convocatoria" required="true" /><br /><br />
                         </div>
                         <div class="modal-footer">
-                            <input style="float: left" type="submit" class="btn btn-success" value="Registrar" id="ingresar"/>
+                            <input style="float: left" type="submit" class="btn btn-success" value="Crear convocatoria" id="crear"/>
                         </div>
                     </form>
                 </div><!-- /.modal-content -->
