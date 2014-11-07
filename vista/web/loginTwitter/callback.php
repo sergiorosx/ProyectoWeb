@@ -3,6 +3,10 @@
 session_start();
 require_once('twitteroauth/twitteroauth.php');
 require_once('config.php');
+//require '../../../controlador/controladorlogin.php';
+require './controlador/controladorlogin.php'; //De esta manera lleva al directorio raiz
+
+$_POST['usertwitter'] = $usuario;
 
 if (isset($_REQUEST['oauth_token']) && $_SESSION['oauth_token'] !== $_REQUEST['oauth_token']) {
   $_SESSION['oauth_status'] = 'oldtoken';
