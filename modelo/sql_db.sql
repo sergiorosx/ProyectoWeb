@@ -11,12 +11,3 @@ CREATE TABLE usuario (
 	numCel VARCHAR(20) NULL,
 	PRIMARY KEY(alias, correoUnivalle)
 );
-
-CREATE TABLE convocatoria (
-	id_convocatoria SERIAL PRIMARY KEY,
-	Nombre Varchar(60) UNIQUE,
-	Descripcion Varchar(800),
-	Fecha_Inicio Date,
-	Fecha_FIn Date,
-	Publicada Boolean
-);

@@ -10,8 +10,7 @@ if(!isset($_SERVER['HTTP_X_REQUESTED_WITH']) AND strtolower($_SERVER['HTTP_X_REQ
     die($output); //exit script outputting json data
 }
 
-if (isset($_POST['nombre']) && isset($_POST['descripcion']) && 
-	isset($_POST['inicio']) && isset($_POST['fin']) ) {
+if (isset($_POST['nombre']) && isset($_POST['descripcion']) && isset($_POST['inicio']) && isset($_POST['fin'])) {
 	/*
 	$nombre = $_POST['nombre'];
 	$descripcion = $_POST['descripcion'];
