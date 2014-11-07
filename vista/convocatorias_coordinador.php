@@ -63,7 +63,7 @@ if ($_SESSION['rol'] != 'Coordinador') {
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="convocatorias_coordinador.php" data-id="">Convocatorias</a></li>
+                    <li><a href="#" class="scroll-link" data-id="">Convocatorias</a></li>
                     <li><a href="#" class="scroll-link" data-id="">FAQ's</a></li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">¡Bienvenido<strong><?php echo ' '.$_SESSION['alias'].'!'; ?></strong> <b class="caret"></b></a>
@@ -77,10 +77,47 @@ if ($_SESSION['rol'] != 'Coordinador') {
             </div><!-- /.navbar-collapse -->
         </nav>
         <div class="container" id="primer-elemento">
-            <h1>Pagina de Inicio para Coordinadores</h1>
-            <p>Bienvenido al área diseñada para coordinadores.</p><br/>
-            <p>Desde esta área podrás crear, modificar, publicar o eliminar las convocatorias.</p><br/>
-            </div>
+            <h1>Convocatorias</h1>
+            <br><br>
+            <p><a class="btn btn-primary btn-lg loginpopup" role="button">Crear Nueva Convocatoria</a></p>
+            <br>
+            <p><a class="btn btn-primary btn-lg" role="button">Modificar Convocatoria</a></p>
+            <br>
+            <p><a class="btn btn-primary btn-lg" role="button">Eliminar Convocatoria</a></p>
+            <br>
+            <p><a class="btn btn-primary btn-lg" role="button">Publicar Nueva Convocatoria</a></p>
+            <br>
+        </div>
+
+        <!-- Code for Login / Signup Popup -->
+        <!-- Modal Log in -->
+        <div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
+            <div class="modal-dialog" style="margin-top: 150px;">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel1">Crear Nueva Convocatoria</h4>
+                    </div>
+                    <form id="formlogin" method="post">
+                        <div class="modal-body" id="login_details">
+                            <span style="font-weight:bold;">Nombre de la nueva convocatoria</span><br />
+                            <input type="text" placeholder="Nuevo nombre" name="nombre_convocatoria" required="true" /><br /><br />
+                            <span style="font-weight:bold;" >Descripción de la convocatoria</span><br />
+                            <textarea style="resize:none" placeholder="Descripción" name="descripcion_convocatoria" maxlength="800" required="true" rows="6" cols="40" draggable="false"></textarea><br />
+                            <span style="font-weight:bold;">Fecha de Inicio</span><br />
+                            <input type="date" placeholder="Día/Mes/Año" name="inicio_convocatoria" required="true" /><br /><br />
+                            <span style="font-weight:bold;">Fecha de Finalización</span><br />
+                            <input type="date" placeholder="Día/Mes/Año" name="fin_convocatoria" required="true" /><br /><br />
+                        </div>
+                        <div class="modal-footer">
+                            <input style="float: left" type="submit" class="btn btn-success" value="Registrar" id="ingresar"/>
+                        </div>
+                    </form>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+        <!--Modal Login Ends -->
+
         <footer>
             <div class="container">
                 <div class="row">
