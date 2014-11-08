@@ -8,16 +8,13 @@ class Convocatoria {
 	var $fecha_fin;
 	var $publicada;
 	
-	function Convocatoria ($nombre, $descripcion, $inicio, $fin, $publicada) {
-	$this->nombre = $nombre;
-	$this->descripcion = $descripcion;
-	$this->inicio = $inicio;
-	$this->fin = $fin;
-	$this->publicada = $publicada;
-	}
-	
-	function crearConvocatoria () {
-		$creada = crearConv($this->nombre, $this->descripcion, $this->inicio, $this->fin, $this->publicada);
+	function crearConvocatoria ($nombre, $descripcion, $inicio, $fin, $publicada) {
+		$this->nombre = $nombre;
+		$this->descripcion = $descripcion;
+		$this->inicio = $inicio;
+		$this->fin = $fin;
+		$this->publicada = $publicada;
+		$creada = crearConv($nombre, $descripcion, $inicio, $fin, $publicada);
 		return $creada;
 	}
 	
@@ -39,6 +36,8 @@ class Convocatoria {
 	
 	function getPublicada() {
 		return $this->publicada;
-	}	
+	}
 }
+//$Convocatoria = new Convocatoria();
+//$Convocatoria->crearConvocatoria('restauranteUV','Largas Filas en el restaurante universitario de univalle','2014/11/6','2014/11/20', 'false');
 ?>
