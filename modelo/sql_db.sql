@@ -11,3 +11,21 @@ CREATE TABLE usuario (
 	numCel VARCHAR(20) NULL,
 	PRIMARY KEY(alias, correoUnivalle)
 );
+
+CREATE TABLE convocatoria (
+	id_convocatoria SERIAL PRIMARY KEY,
+	nombre VARCHAR(60),
+	descripcion VARCHAR(800),
+	fecha_inicio DATE,
+	fecha_fin DATE,
+	publicada BOOLEAN
+);
+
+CREATE TABLE convocatoriaxpropuesta (
+	id_convocatoria
+	id_propuesta
+);
+
+CREATE TABLE propuesta (
+	id_propuesta SERIAL PRIMARY KEY
+);

@@ -121,6 +121,9 @@ function crearConv($nombre, $descripcion, $fechainicio, $fechafin, $publica) {
 }
 
 //crearConv('restauranteUV','Largas Filas en el restaurante universitario de univalle','2014/11/6','2014/11/20','false');
+//crearConv('reciclajeUV','diariamente se pierden toneladas de reciclaje','2014/09/6','2014/12/03','false');
+//crearConv('restauranteUV','Largas Filas en el restaurante universitario de univalle','2014/11/6','2014/11/20','false');
+//crearConv('restauranteUV','Largas Filas en el restaurante universitario de univalle','2014/11/6','2014/11/20','false');
 
 //Esta funcion devuelve todas las convocatorias que se encuentran publicas en la base de datos, las envia en un array
 //por tanto hay que ver linea por linea para colocar en cada convocatoria su nombre y su descripcion y validar su fecha

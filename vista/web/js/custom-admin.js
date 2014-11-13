@@ -8,9 +8,4 @@ $(document).ready(function() {
 		$('#modalrol').modal('toggle');
 	});
 	
-	$("#micuenta").bind("click", function() {
-		//traer informacion con ajax y formatearla en el modal
-		$('#modalusuario').modal('toggle');
-	});
-	
 });
