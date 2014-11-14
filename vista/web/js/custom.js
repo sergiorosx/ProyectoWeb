@@ -16,6 +16,8 @@ $(document).ready(function() {
 	
 	$(".micuenta").bind("click", function() {
 		//traer informacion con ajax y formatearla en el modal
+		
+		
 		$('#modalusuario').modal('toggle');
 	});
 	 

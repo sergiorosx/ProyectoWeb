@@ -18,6 +18,17 @@ class Convocatoria {
 		return $creada;
 	}
 	
+	function setPublicacion ($nombre) {
+		$publicada = publicarConvocatoria($nombre);
+		return $publicada;
+	}
+	
+	function getConvocatorias() {
+		$convocatorias = consultarConvocatorias();
+		$json = json_encode($convocatorias);
+		return $json;
+	}
+	
 	function getNombre() {
 		return $this->nombre;
 	}
@@ -39,5 +50,6 @@ class Convocatoria {
 	}
 }
 //$Convocatoria = new Convocatoria();
+//$Convocatoria->getConvocatorias();
 //$Convocatoria->crearConvocatoria('restauranteUV','Largas Filas en el restaurante universitario de univalle','2014/11/6','2014/11/20', 'false');
 ?>

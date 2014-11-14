@@ -147,9 +147,9 @@ if ($_SESSION['rol'] != 'Coordinador') {
                             <span style="font-weight:bold;" >Descripción de la convocatoria</span><br />
                             <textarea style="resize:none" placeholder="Descripción" name="descripcion_convocatoria" maxlength="800" required="true" rows="6" cols="40" draggable="false"></textarea><br />
                             <span style="font-weight:bold;">Fecha de Inicio</span><br />
-                            <input type="date" placeholder="Día/Mes/Año" name="inicio_convocatoria" required="true" /><br /><br />
+                            <input type="date" placeholder="Año/Mes/Día" name="inicio_convocatoria" required="true" /><br /><br />
                             <span style="font-weight:bold;">Fecha de Finalización</span><br />
-                            <input type="date" placeholder="Día/Mes/Año" name="fin_convocatoria" required="true" /><br /><br />
+                            <input type="date" placeholder="Año/Mes/Día" name="fin_convocatoria" required="true" /><br /><br />
 							<span>* Campos obligatorios</span>
 							<span id="error_conv"></span>
                         </div>
@@ -193,12 +193,14 @@ if ($_SESSION['rol'] != 'Coordinador') {
 					<h1>Convocatorias  <small>crear, editar, publicar</small></h1>
 				</div>
 				<input style="float: left" type="submit" class="btn btn-primary convocatoriapopup" value="Crear Convocatoria" id="crearconvocatoria"/>
-				<table id="tablaconvocatoria" data-toggle="table" data-url="cargarData()" data-height="400" data-pagination="true" data-search="true">
+				<table id="tablaconvocatoria" data-toggle="table" data-url="coordinador/data.php" data-height="400" data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-search="true" data-select-item-name="toolbar1" data-pagination="true">
 					<thead>
 						<tr>
-							<th data-field="id" data-sortable="true">Nombre</th>
-							<th data-field="name" data-sortable="true">Descripción</th>
-							<th data-field="price" data-sortable="true"># propuestas</th>
+							<th data-field="nombre" data-sortable="true">Nombre</th>
+							<th data-field="descripcion" data-sortable="true">Descripción</th>
+							<th data-field="fecha_inicio" data-sortable="true">Creada</th>
+							<th data-field="fecha_fin" data-sortable="true">Cierre</th>
+							<th data-field="publicada" data-sortable="true">Publicada</th>
 							<th data-field="operate" data-formatter="operateFormatter1" data-events="operateEvents1">Opciones</th>
 						</tr>
 					</thead>
@@ -215,16 +217,38 @@ if ($_SESSION['rol'] != 'Coordinador') {
 							'</a>'
 						].join('');
 					}
-						window.operateEvents1 = {
+					window.operateEvents1 = {
 						'click .editc': function (e, value, row, index) {
 							//alert('You click edit icon, row: ' + JSON.stringify(row));
 							console.log(value, row, index);
 							$('#modalconvocatoria').modal('toggle');
 						},
 						'click .uploadc': function (e, value, row, index) {
-							//alert('You click remove icon, row: ' + JSON.stringify(row));
 							console.log(value, row, index);
-							funciona();
+							
+							post_data = {'nombreconv': row.nombre};
+							
+							$.post('../controlador/controladorcoordinador.php', post_data, function(response) {
+								console.log('ajax ok');
+								if(response.type == 'error'){ //load json data from server and output message    
+									console.log('error ' + response.type + " " + response.text);
+									alert('Error: ' + response.text);
+								} else {
+									console.log('No hay error ' + response.type + " " + response.text);
+									$('#tablaconvocatoria').bootstrapTable('updateRow', {	index: index,
+																							row: {
+																								nombre: row.nombre,
+																								descripcion: row.descripcion,
+																								fecha_inicio: row.fecha_inicio,
+																								fecha_fin: row.fecha_fin,
+																								publicada: 't'
+																							}
+																						});
+								}
+							}, 'json').fail(function() {
+								// just in case posting your form failed
+								console.log( "Posting failed." );
+							});
 						}
 					};
 				</script>
@@ -237,7 +261,7 @@ if ($_SESSION['rol'] != 'Coordinador') {
 				<div class="page-header">
 					<h1>Propuestas  <small>administrar comentarios</small></h1>
 				</div>
-				<table id="tablapublicaciones" data-toggle="table" data-url="data2.json" data-height="400" data-pagination="true" data-search="true">
+				<table id="tablapublicaciones" data-toggle="table" data-url="coordinador/data2.json" data-height="400" data-search="true" data-pagination="true">
 					<thead>
 						<tr>
 							<th data-field="id" data-sortable="true">Nombre</th>

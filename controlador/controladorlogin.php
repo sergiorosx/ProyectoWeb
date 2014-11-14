@@ -52,7 +52,40 @@ elseif ( isset($_POST['correoFacebook']) ) {
 		$output = json_encode(array('type'=>'error', 'text' => 'cuenta Facebook no relacionada con @correoUV'));
 		die($output);
 	}
-}// REGISTRO DE USUARIO
+}// REGISTRO DE USUARIO index-admin.php
+elseif (isset($_POST['nombre']) 		&& isset($_POST['correoUV'])	&&
+		isset($_POST['alias']) 			&& isset($_POST['contrasena']) 	&&
+		isset($_POST['valcontrasena']) 	&& isset($_POST['correoFB']) 	&&
+		isset($_POST['usuarioTw'])) {
+
+	//Sanitize input data using PHP filter_var().
+	$nombre			= $_POST["nombre"];
+	$correoUV     	= filter_var($_POST["correoUV"], FILTER_SANITIZE_EMAIL);
+	$alias			= $_POST["alias"];
+	$contrasena 	= $_POST["contrasena"];
+	$valcontrasena	= $_POST["valcontrasena"];
+	$correoFB		= $_POST["correoFB"];
+	$usuarioTw		= $_POST["usuarioTw"];
+	
+	/*//additional php validation
+	if(!filter_var($correo, FILTER_VALIDATE_EMAIL)){ //email validation
+	    $output = json_encode(array('type'=>'error', 'text' => 'Ingrese un correo valido!'));
+		die($output);
+	}*/
+	//validar que sea correo univalle
+	// pendiente validacoin del password, evitar sql injection y longitud minima
+	
+	$Usuario = new Usuario();
+	
+	if	($Usuario->crearUsuario($alias, $contrasena, $nombre, $correoUV, $correoFB, $usuarioTw, , '','','') ) {
+		$output = json_encode(array('type'=>'message', 'alias' => $Usuario->getAlias()));
+		die($output);
+	} else {
+		$output = json_encode(array('type'=>'error', 'text' => 'el usuario ya existe'));
+		die($output);
+	}
+}
+// REGISTRO DE USUARIO index.php
 elseif (isset($_POST['nombre']) 		&& isset($_POST['correoUV'])	&&
 		isset($_POST['alias']) 			&& isset($_POST['contrasena']) 	&&
 		isset($_POST['valcontrasena']) 	&& isset($_POST['correoFB']) 	&&
