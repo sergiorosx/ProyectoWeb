@@ -13,6 +13,11 @@ $(document).ready(function() {
 	    $('#signup').modal('hide');
 	     $('#login').modal('toggle');
 	});
+	
+	$(".micuenta").bind("click", function() {
+		//traer informacion con ajax y formatearla en el modal
+		$('#modalusuario').modal('toggle');
+	});
 	 
 	 /*
 	 // Boostrap Slider
@@ -192,42 +197,6 @@ $(document).ready(function() {
 					alert('usuario ' + response.alias + ' creado exitosamente!! Ya puede Iniciar sesion');
 					// activar submit
 					$('input[type="submit"]').removeAttr('disabled');
-                }
-            }, 'json').fail(function() {
-                // just in case posting your form failed
-                console.log( "Posting failed." );
-            });
-            // to prevent refreshing the whole page page
-            return false;
-        }
-    });
-	
-	
-	$("#formconv").submit(function() {
-        console.log('accion submit');
-		// validacion de campos
-		var validado = true;
-		
-		//everything looks good! proceed...
-		if(validado) {	
-        	
-            //get input field values data to be sent to server
-            post_data = {
-                'nombre'     	: $('input[name=nombre_convocatoria]').val(),
-                'descripcion'  	: $('textarea[name=descripcion_convocatoria]').val(),
-                'inicio' 		: $('input[name=inicio_convocatoria]').val(),
-                'fin' 			: $('input[name=fin_convocatoria]').val()
-            };
-            console.log('post data ok');
-            //Ajax post data to server controlador_login.php
-            $.post('../controlador/controladorcoordinador.php', post_data, function(response) {
-				console.log('ajax ok');
-                if(response.type == 'error'){ //load json data from server and output message    
-                    console.log('error ' + response.type + " " + response.text);
-					alert('Error ' + response.text);
-                } else {
-                	console.log('No hay error ' + response.type + " " + response.text);
-					alert('Se ha creado la convocatoria');
                 }
             }, 'json').fail(function() {
                 // just in case posting your form failed

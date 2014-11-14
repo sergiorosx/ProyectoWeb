@@ -103,7 +103,7 @@ if ($_SESSION['rol'] != 'Administrador') {
 						<span >*Alias</span><br />
 						<input type="text" placeholder="miusuario" name="usuario_nick" required/> </br></br>
 						<span >*Rol</span><br />
-						<select class="form-control">
+						<select name="usuario_rol" class="form-control">
 							<option>Participante</option>
 							<option>Coordinador</option>
 							<option>Jurado</option>
@@ -120,7 +120,7 @@ if ($_SESSION['rol'] != 'Administrador') {
 						<span >Tipo documento (opcional)</span><br />
 						<input type="text" placeholder="T.I. o C.C. o C.E." maxlength="40" name="usuario_tipodoc" /> </br></br>
 						<span >Numero documento (opcional)</span><br />
-						<input type="text" placeholder="Escriba un numero sin puntos" maxlength="40" name="usuario_tipodoc" /> </br></br>
+						<input type="text" placeholder="Escriba un numero sin puntos" maxlength="40" name="usuario_dcto" /> </br></br>
 						<span >Numero de celular (opcional)</span><br />
 						<input type="text" placeholder="Escriba un numero sin puntos" maxlength="40" name="usuario_cel" /> </br></br>
 						<span>* Campos obligatorios</span>
