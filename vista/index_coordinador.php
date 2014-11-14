@@ -193,7 +193,7 @@ if ($_SESSION['rol'] != 'Coordinador') {
 					<h1>Convocatorias  <small>crear, editar, publicar</small></h1>
 				</div>
 				<input style="float: left" type="submit" class="btn btn-primary convocatoriapopup" value="Crear Convocatoria" id="crearconvocatoria"/>
-				<table id="tablaconvocatoria" data-toggle="table" data-url="data2.json" data-height="400" data-pagination="true" data-search="true">
+				<table id="tablaconvocatoria" data-toggle="table" data-url="cargarData()" data-height="400" data-pagination="true" data-search="true">
 					<thead>
 						<tr>
 							<th data-field="id" data-sortable="true">Nombre</th>
@@ -224,6 +224,7 @@ if ($_SESSION['rol'] != 'Coordinador') {
 						'click .uploadc': function (e, value, row, index) {
 							//alert('You click remove icon, row: ' + JSON.stringify(row));
 							console.log(value, row, index);
+							funciona();
 						}
 					};
 				</script>
@@ -287,7 +288,7 @@ if ($_SESSION['rol'] != 'Coordinador') {
 								<div class="panel-heading">
 									<h4 class="panel-title">
 										<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">Lorem ipsum dolor sit amet, consectetur adipiscing elit?</a>
-										<a style="float: right" class="editfaq" href="#" title="editar FAQ">
+										<a style="float: right" class="editfaq" href="javascript:void(0)" title="editar FAQ">
 											<i class="glyphicon glyphicon-edit"></i>
 										</a>
 									</h4>

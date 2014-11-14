@@ -120,9 +120,33 @@ function crearConv($nombre, $descripcion, $fechainicio, $fechafin, $publica) {
 	return true;
 }
 
-//crearConv('restauranteUV','Largas Filas en el restaurante universitario de univalle','2014/11/6','2014/11/20','false');
-//crearConv('reciclajeUV','diariamente se pierden toneladas de reciclaje','2014/09/6','2014/12/03','false');
-//crearConv('restauranteUV','Largas Filas en el restaurante universitario de univalle','2014/11/6','2014/11/20','false');
+function consultarUsuarios(){
+	$conexion = conectar();
+	
+	$consulta = "SELECT alias, nombre_completo, rol, correounivalle FROM usuario";
+	$resultado = pg_query($conexion, $consulta) or die ('La consulta de convocatorias falló por el siguiente error: ' . pg_last_error());
+	
+	$filas=pg_numrows($resultado);
+	if ($filas==0){ 
+    	$infousuarios = "False";
+	} else {             
+        while ($line = pg_fetch_array($resultado, null, PGSQL_ASSOC)) {
+    		foreach ($line as $col_value) {
+        		$infousuarios .= $col_value.",";
+    		}
+		}
+	}
+	//echo $infousuarios;
+	
+	$array = pg_fetch_all($resultado);
+	pg_freeResult($resultado);
+	pg_close($conexion);
+	
+	//print_r ($array);
+	
+	return $array;	
+}
+
 //crearConv('restauranteUV','Largas Filas en el restaurante universitario de univalle','2014/11/6','2014/11/20','false');
 
 //Esta funcion devuelve todas las convocatorias que se encuentran publicas en la base de datos, las envia en un array
@@ -143,7 +167,7 @@ function consultarConvocatoria(){
     		}
 		}
 	}
-	echo $infoconvocatoria;
+	//echo $infoconvocatoria;
 	$array = pg_fetch_array($resultado);
 	pg_freeResult($resultado);
 	pg_close($conexion);
@@ -151,4 +175,5 @@ function consultarConvocatoria(){
 	return $array;
 }
 //consultarConvocatoria();
+//consultarUsuarios();
 ?>
