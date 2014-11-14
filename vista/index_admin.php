@@ -27,7 +27,7 @@ if ($_SESSION['rol'] != 'Administrador') {
     <link rel="stylesheet" href="web/css/bootstrap.css">
 	<link rel="stylesheet" href="web/css/bootstrap-table.css">
 	<!--botones redes sociales-->
-	<link rel="stylesheet" href="web/css/bootstrap-social.css">
+	 <link rel="stylesheet" href="web/css/bootstrap-social.css">
 	
     <!-- Custom Google Web Font -->
     <link href="web/font-awesome/css/font-awesome.min.css" rel="stylesheet">
@@ -75,7 +75,7 @@ if ($_SESSION['rol'] != 'Administrador') {
 		  <li class="dropdown">
 			<a href="#" class="dropdown-toggle" data-toggle="dropdown">¡Bienvenido<strong><?php echo ' '.$_SESSION['alias'].'!'; ?></strong> <b class="caret"></b></a>
 			<ul class="dropdown-menu">
-			  <li><a href="#" class="micuenta">Mi cuenta</a></li>
+			  <li><a href="#" id="micuenta">Mi cuenta</a></li>
 			  <li class="divider"></li>
 			  <li><a href="logout.php">Cerrar sesion</a></li>
 			</ul>
@@ -103,7 +103,7 @@ if ($_SESSION['rol'] != 'Administrador') {
 						<span >*Alias</span><br />
 						<input type="text" placeholder="miusuario" name="usuario_nick" required/> </br></br>
 						<span >*Rol</span><br />
-						<select class="form-control">
+						<select name="usuario_rol" class="form-control">
 							<option>Participante</option>
 							<option>Coordinador</option>
 							<option>Jurado</option>
@@ -120,7 +120,7 @@ if ($_SESSION['rol'] != 'Administrador') {
 						<span >Tipo documento (opcional)</span><br />
 						<input type="text" placeholder="T.I. o C.C. o C.E." maxlength="40" name="usuario_tipodoc" /> </br></br>
 						<span >Numero documento (opcional)</span><br />
-						<input type="text" placeholder="Escriba un numero sin puntos" maxlength="40" name="usuario_tipodoc" /> </br></br>
+						<input type="text" placeholder="Escriba un numero sin puntos" maxlength="40" name="usuario_dcto" /> </br></br>
 						<span >Numero de celular (opcional)</span><br />
 						<input type="text" placeholder="Escriba un numero sin puntos" maxlength="40" name="usuario_cel" /> </br></br>
 						<span>* Campos obligatorios</span>
@@ -166,7 +166,7 @@ if ($_SESSION['rol'] != 'Administrador') {
 				<h1>Usuarios  <small>crear, editar, eliminar</small></h1>
 			</div>
 			<input style="float: left" type="submit" class="btn btn-primary usuariopopup" value="Crear usuario" id="crearusuario"/>
-			<table id="tablausuario" data-toggle="table" data-url="data2.json" data-height="400" data-pagination="true" data-search="true">
+			<table id="events-id2" data-toggle="table" data-url="data2.json" data-height="400" data-pagination="true" data-search="true">
 				<thead>
 					<tr>
 						<th data-field="id" data-sortable="true">Alias</th>
@@ -180,10 +180,10 @@ if ($_SESSION['rol'] != 'Administrador') {
 			<script>
 				function operateFormatter1(value, row, index) {
 					return [
-						'<a class="editu ml10" href="javascript:void(0)" title="Editar">',
+						'<a class="editu ml10" href="javascript:void(0)" title="Edit">',
 							'<i class="glyphicon glyphicon-edit"></i>',
 						'</a>',
-						'<a class="removeu ml10" href="javascript:void(0)" title="Eliminar">',
+						'<a class="removeu ml10" href="javascript:void(0)" title="Remove">',
 							'<i class="glyphicon glyphicon-remove"></i>',
 						'</a>'
 					].join('');
@@ -223,10 +223,10 @@ if ($_SESSION['rol'] != 'Administrador') {
 			<script>
 				function operateFormatter2(value, row, index) {
 					return [
-						'<a class="editr ml10" href="javascript:void(0)" title="Editar">',
+						'<a class="editr ml10" href="javascript:void(0)" title="Edit">',
 							'<i class="glyphicon glyphicon-edit"></i>',
 						'</a>',
-						'<a class="remover ml10" href="javascript:void(0)" title="Eliminar">',
+						'<a class="remover ml10" href="javascript:void(0)" title="Remove">',
 							'<i class="glyphicon glyphicon-remove"></i>',
 						'</a>'
 					].join('');

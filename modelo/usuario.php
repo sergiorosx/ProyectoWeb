@@ -25,6 +25,7 @@ class Usuario {
 	function getRol () {
 		return $this->rol;
 	}
+	
 
 	function validarUsuario ($correouv, $contrasena) {
 		$usuario = validarUsuarioUnivalle($correouv, $contrasena);
@@ -81,11 +82,17 @@ class Usuario {
 			return true;
 		}
 	}
+	
+	function consultarUsuario(){
+		$arregloUsuarios = consultarUsuarios();
+		return $arregloUsuarios;
+	}
 }
-/*$Usuario = new Usuario();
+//$Usuario = new Usuario();
+//$arreglo = $Usuario -> consultarUsuario();
 //$Usuario->validarUsuario('sergio.garcia@correounivalle.edu.co', 'univalle123');
-$Usuario->validarUsuario('sergio.garcia@correounivalle.edu.co', 'univa');
-$Usuario->validarUsuarioFb('sergiorosx@hotmail.com');
-$Usuario->validarUsuarioFb('juancamilo_lopez9218@hotmail.com');
-$Usuario->validarUsuarioTw('sergiorosx');*/
+//$Usuario->validarUsuario('sergio.garcia@correounivalle.edu.co', 'univa');
+//$Usuario->validarUsuarioFb('sergiorosx@hotmail.com');
+//$Usuario->validarUsuarioFb('juancamilo_lopez9218@hotmail.com');
+//$Usuario->validarUsuarioTw('sergiorosx');*/
 ?>

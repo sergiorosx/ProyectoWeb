@@ -174,7 +174,7 @@ if (isset($_SESSION['autorizado']) && isset($_SESSION['alias']) && isset($_SESSI
                 <div class="col-lg-5 col-sm-6">
                     <div class="clearfix"></div>
                     <h2 class="section-heading">Acerca de</h2>
-                    <p class="lead">Ideas UV es una aplicacion Web de la Universidad del Valle que permite a la comunidad universitaria aportar posibles soluciones a un problema en el marco de un concurso de ideas que se consolidan como propuestas y son sometidas a votacion. Tambien participa un grupo de expertos o jurados, los cuales evaluan si las mejores porpuestas son viables y son estos los que elijen la mejor propuesta de acuerdo a unos criterios establecidos.</p>
+                    <p class="lead">Ideas UV es una aplicación Web de la Universidad del Valle que permite a la comunidad universitaria aportar posibles soluciones a un problema en el marco de un concurso de ideas que se consolidan como propuestas y son sometidas a votación. También participa un grupo de expertos o jurados, los cuales evalúan si las mejores propuestas son viables y son estos los que eligen, de acuerdo a unos criterios establecidos, la mejor de ellas entre las más votadas por la comunidad.</p>
                 </div>
                 <div class="col-lg-5 col-lg-offset-2 col-sm-6">
                     <img class="img-responsive" src="vista/web/img/ipad.jpg" alt="">

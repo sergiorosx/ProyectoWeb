@@ -50,5 +50,17 @@ $(document).ready(function() {
             return false;
         }
     });
-	
 });
+
+function cargarData() {
+	$.post('JSon.php', post_data, function(response) {
+                return response;
+            }, 'json').fail(function() {
+                // just in case posting your form failed
+                console.log( "Posting failed." );
+            });
+}
+
+function funciona() {
+	alert("funciona");
+}
