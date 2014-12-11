@@ -193,7 +193,7 @@ if ($_SESSION['rol'] != 'Coordinador') {
 					<h1>Convocatorias  <small>crear, editar, publicar</small></h1>
 				</div>
 				<input style="float: left" type="submit" class="btn btn-primary convocatoriapopup" value="Crear Convocatoria" id="crearconvocatoria"/>
-				<table id="tablaconvocatoria" data-toggle="table" data-url="coordinador/data.php" data-height="400" data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-search="true" data-select-item-name="toolbar1" data-pagination="true">
+				<table id="tablaconvocatoria" data-toggle="table" data-url="web/data/data_conv.php" data-height="400" data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-search="true" data-select-item-name="toolbar1" data-pagination="true">
 					<thead>
 						<tr>
 							<th data-field="nombre" data-sortable="true">Nombre</th>

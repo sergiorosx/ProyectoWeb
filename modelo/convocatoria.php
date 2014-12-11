@@ -28,6 +28,12 @@ class Convocatoria {
 		$json = json_encode($convocatorias);
 		return $json;
 	}
+
+	function getConvocatorias_act() {
+		$convocatorias_act = consultarConvocatorias_act();
+		$json = json_encode($convocatorias_act);
+		return $json;
+	}
 	
 	function getNombre() {
 		return $this->nombre;
