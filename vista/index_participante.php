@@ -24,6 +24,7 @@ if ($_SESSION['rol'] != 'Participante') {
 
     <!-- Bootstrap core CSS -->
     <link href="web/css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" href="web/css/bootstrap-table.css">
 	  <!--botones redes sociales-->
 	  <link href="web/css/bootstrap-social.css" rel="stylesheet" >
 	
@@ -33,10 +34,14 @@ if ($_SESSION['rol'] != 'Participante') {
 
     <!-- Add custom CSS here -->
     <link href="web/css/custom.css" rel="stylesheet">
+    
 	  <!-- JavaScript -->
     <script src="web/js/jquery-1.10.2.js"></script>
     <script src="web/js/bootstrap.js"></script>
-    <script src="web/js/custom.js"></script>
+    <script src="web/js/bootstrap-table.js"></script>
+		<script src="web/js/bootstrap-table-es-AR.js"></script>
+        <script src="web/js/custom.js"></script>
+		<script src="web/js/custom-coordinador.js"></script>
 	
 	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -78,8 +83,22 @@ if ($_SESSION['rol'] != 'Participante') {
   </div><!-- /.navbar-collapse -->
   </nav>
   <div class="container" id="primer-elemento">
-    <h1>Pagina de inicio para participantes</h1>
-    <p>desarrollar front-end restante</p>
+    <h1>Convocatorias</h1>
+    
+    <!-- convocatorias -->
+        <div class="content-section-b" id="convocatorias">
+			<div class="container">
+				<table id="tablaconvocatoria" data-toggle="table" data-url="web/data/data_conv_act.php" data-height="400" data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-search="true" data-select-item-name="toolbar1" data-pagination="true">
+					<thead>
+						<tr>
+							<th data-field="nombre" data-sortable="true">Nombre</th>
+							<th data-field="descripcion" data-sortable="true">Descripción</th>
+							<th data-field="fecha_fin" data-sortable="true">Cierre</th>
+						</tr>
+					</thead>
+				</table>
+			</div>
+		</div><!-- ./convocatorias -->    
   </div>
     <footer>
         <div class="container">

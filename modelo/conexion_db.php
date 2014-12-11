@@ -18,23 +18,56 @@ function cerrar($conn) {
 	pg_close($conexion);
 }
 
-function crearUser($alias, $contrasenia, $nombrecompleto, $correoUV, $correoFace, $usuarioTwitter, $rol, $tipoDoc, $numDoc, $numCel) {
+function crearUser($alias, $contrasenia, $nombre, $correoUV, $correoFace, $usuarioTw, $rol, $tipoDoc, $numDoc, $numCel) {
 	
 	$conexion = conectar();
 	$contrasenia = base64_encode($contrasenia);
-	$consulta = "INSERT INTO usuario VALUES('".$alias."','".$contrasenia."','".$nombrecompleto."','".$correoUV."','".$correoFace."','".$usuarioTwitter."','".$rol."','".$tipoDoc."','".$numDoc."','".$numCel."')";
+	$consulta = "INSERT INTO usuario VALUES('".$alias."','".$contrasenia."','".$nombre."','".$correoUV."','".$correoFace."','".$usuarioTw."','".$rol."','".$tipoDoc."','".$numDoc."','".$numCel."')";
 	$resultado = pg_query($conexion, $consulta);
 	
-	if (!$resultado) {
-		echo("La inserción falló por el siguiente error: ". pg_last_error() );
-	}
 	pg_freeResult($resultado);
 	pg_close($conexion);
+	
+	return $resultado;
+}
+//crearUser('sergiogl','univalle123','Sergio Garcia Lozano','sergio.garcia@correounivalle','sergiorosx@hotmail.com','sergiorosx','Participante','','','');
+
+function editarUser($alias, $nombrecompleto, $correoUV, $correoFace, $usuarioTwitter, $rol, $tipoDoc, $numDoc, $numCel) {
+	$conexion = conectar();
+	
+	$consulta = "UPDATE usuario SET alias='".$alias."' AND correounivalle='".$correoUV."' WHERE alias='".$alias."', nombre_completo='".$nombrecompleto."', correounivalle='".$correoUV."', correofacebook='".$correoFace."', usuariotwitter='".$usuarioTwitter."', rol='".$rol."', tipodoc='".$tipoDoc."', numdoc='".$numDoc."', numcel='".$numCel."'";
+	$resultado = pg_query($conexion, $update);
+	
+	if (!$resultado) {
+		return false;
+	}
+	
+	pg_freeResult($resultado);
+	pg_close($conexion);
+	
+	return true;
 }
 
-function existeUsuario ($alias, $corrreouv) {
+function eliminarUser($alias, $correoUV) {
 	$conexion = conectar();
-	$consulta = "SELECT * FROM usuario WHERE correoUnivalle = '$correoUV' AND contrasenia = '$pwd'";
+	
+	$delete = "DELETE FROM usuario WHERE alias='".$alias."' AND correounivalle='".$correoUV."'";
+	$resultado = pg_query($conexion, $delete);
+	
+	if (!$resultado) {
+		return false;
+	}
+	
+	pg_freeResult($resultado);
+	pg_close($conexion);
+	
+	return true;
+}
+//eliminarUser('sergiogl', 'sergio.garcia@correounivalle.edu.co');
+
+function existeUsuario ($alias, $correoUV) {
+	$conexion = conectar();
+	$consulta = "SELECT * FROM usuario WHERE correounivalle = '$correoUV' AND contrasenia = '$pwd'";
 	$resultado = pg_query($conexion, $consulta);
 	
 	if($resultado) {
@@ -120,60 +153,78 @@ function crearConv($nombre, $descripcion, $fechainicio, $fechafin, $publica) {
 	return true;
 }
 
+//crearConv('restauranteUV','Largas Filas en el restaurante universitario de univalle','2014/11/6','2014/11/20','false');
+//crearConv('reciclajeUV','Se estan desperdiciando grandes volumenes de material reciclable','2014/10/03','2014/12/03','false');
+//crearConv('encapuchados','personas con identidad desconocidad alteran el orden publico de la universidad y el sector de la pasoancho con 100','2014/09/13','2014/12/03','false');
+
 function consultarUsuarios(){
 	$conexion = conectar();
 	
-	$consulta = "SELECT alias, nombre_completo, rol, correounivalle FROM usuario";
+	$consulta = "SELECT * FROM usuario";
 	$resultado = pg_query($conexion, $consulta) or die ('La consulta de convocatorias falló por el siguiente error: ' . pg_last_error());
 	
-	$filas=pg_numrows($resultado);
-	if ($filas==0){ 
-    	$infousuarios = "False";
-	} else {             
-        while ($line = pg_fetch_array($resultado, null, PGSQL_ASSOC)) {
-    		foreach ($line as $col_value) {
-        		$infousuarios .= $col_value.",";
-    		}
-		}
+	if (!$resultado){ 
+		return false;
 	}
-	//echo $infousuarios;
+	
+	$array = pg_fetch_all($resultado);
+	pg_freeResult($resultado);
+	pg_close($conexion);
+	return $array;	
+}
+//consultarUsuarios();
+
+//Esta funcion devuelve todas las convocatorias que se encuentran publicas en la base de datos, las envia en un array
+//por tanto hay que ver linea por linea para colocar en cada convocatoria su nombre y su descripcion y validar su fecha
+function consultarConvocatorias(){
+	$conexion = conectar();
+	
+	$consulta = "SELECT nombre, descripcion, fecha_inicio, fecha_fin, publicada FROM convocatoria";
+	$resultado = pg_query($conexion, $consulta) or die ('La consulta de convocatorias falló por el siguiente error: ' . pg_last_error());
+	
+	if (!$resultado){ 
+    	return false;
+	}
 	
 	$array = pg_fetch_all($resultado);
 	pg_freeResult($resultado);
 	pg_close($conexion);
 	
-	//print_r ($array);
-	
-	return $array;	
+	return $array; 
 }
+//consultarConvocatorias();
 
-//crearConv('restauranteUV','Largas Filas en el restaurante universitario de univalle','2014/11/6','2014/11/20','false');
-
-//Esta funcion devuelve todas las convocatorias que se encuentran publicas en la base de datos, las envia en un array
-//por tanto hay que ver linea por linea para colocar en cada convocatoria su nombre y su descripcion y validar su fecha
-function consultarConvocatoria(){
+function consultarConvocatorias_act(){
 	$conexion = conectar();
 	
-	$consulta = "SELECT * FROM convocatoria WHERE publicada='true'";
+	$consulta = "SELECT nombre, descripcion, fecha_inicio, fecha_fin, publicada FROM convocatoria WHERE publicada='true' AND fecha_fin>=current_timestamp";
 	$resultado = pg_query($conexion, $consulta) or die ('La consulta de convocatorias falló por el siguiente error: ' . pg_last_error());
 	
-	$filas=pg_numrows($resultado);
-	if ($filas==0){ 
-    	$infoconvocatoria = "False";
-	} else {             
-        while ($line = pg_fetch_array($resultado, null, PGSQL_ASSOC)) {
-    		foreach ($line as $col_value) {
-        		$infoconvocatoria .= $col_value.",";
-    		}
-		}
+	if (!$resultado){ 
+    	return false;
 	}
-	//echo $infoconvocatoria;
-	$array = pg_fetch_array($resultado);
+	
+	$array = pg_fetch_all($resultado);
 	pg_freeResult($resultado);
 	pg_close($conexion);
-	
+//print_r($array);
 	return $array;
 }
-//consultarConvocatoria();
-//consultarUsuarios();
+//consultarConvocatorias_act();
+
+function publicarConvocatoria ($nombre) {
+	$conexion = conectar();
+	
+	$update = "UPDATE convocatoria SET publicada='t' WHERE nombre='".$nombre."'";
+	$resultado = pg_query($conexion, $update);
+	
+	if (!$resultado){ 
+    	return false;
+	}
+	
+	pg_freeResult($resultado);
+	pg_close($conexion);
+	return true;
+}
+//publicarConvocatoria('restauranteUV');
 ?>

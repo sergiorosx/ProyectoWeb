@@ -213,7 +213,13 @@ p.copyright {
 #signup input[type="text"], 
 #signup input[type="password"],
 #signup input[type="date"],
-#signup input[type="email"]
+#signup input[type="email"],
+#crearusuario input[type="text"],
+#crearusuario input[type="password"],
+#crearusuario input[type="email"],
+#editarusuario input[type="text"],
+#editarusuario input[type="password"],
+#editarusuario input[type="email"]
 {
 	width: 100%;
 	height: 28px;

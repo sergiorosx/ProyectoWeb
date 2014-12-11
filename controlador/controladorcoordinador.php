@@ -26,6 +26,19 @@ if (isset($_POST['nombre']) && isset($_POST['descripcion']) && isset($_POST['ini
 		$output = json_encode(array('type'=>'error', 'text' => 'La convocatoria ya existe'));
 		die($output);
 	}
+} // publicar convocatoria
+elseif (isset($_POST['nombreconv'])) {
+	$nombreconv = $_POST['nombreconv'];
+	
+	$Convocatoria = new Convocatoria();
+	
+	if($Convocatoria->setPublicacion($nombreconv)){
+		$output = json_encode(array('type'=>'message', 'text' => 'publicada'));
+		die($output);
+	} else {
+		$output = json_encode(array('type'=>'error', 'text' => 'nombre erroneo o no existe'));
+		die($output);
+	}
 }
 else {
 	$output = json_encode(array('type'=>'error', 'text' => 'Fatal Error'));

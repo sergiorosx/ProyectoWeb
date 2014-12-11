@@ -1,0 +1,11 @@
+{"employees":
+[
+    {"pregunta":"¿Es necesario tener una cuenta para poder acceder a las convocatorias?", "respuesta":"Sí, no se permitirá el acceso indiscriminado a quien no se haya registrado previamente y luego se haya logueado dentro de la página."},
+    {"pregunta":"¿Cualquier persona puede acceder al contenido de la página web?", "respuesta":"En la página web se valida siempre que el usuario que se registra pertenezca a la Universidad del Valle a través del correo institucional. Por lo tanto, el acceso sólo está disponible para los estudiantes de la Universidad del Valle."},
+    {"pregunta":"Si ya he accedido como estudiante, ¿cómo puedo participar?", "respuesta":"Existen 3 maneras de participar como estudiante: Publicando una propuesta de solución en alguna de las convocatorias, votando por una de estas o dando tu opinión (realizando comentarios)."},
+    {"pregunta":"¿Qué es una convocatoria?", "respuesta":"Una convocatoria es un planteamiento de algún problema que afecta a toda la comunidad universitaria; el cual se da a conocer a los estudiantes a través de la página; para que estos tomen decisiones frente a las mismas."},
+    {"pregunta":"¿Se puede participar en varias convocatorias al mismo tiempo?", "respuesta":"Si es sólo para realizar votaciones o comentarios, sí es posible; pero si lo que se desea es participar proponiendo alguna solución; existe un límite máximo de una (1) propuesta de solución por cada convocatoria publicada."},
+    {"pregunta":"¿Cómo funcionan las convocatorias?", "respuesta":"Inicialmente, se publica una convocatoria en la página web; la cual consiste de un problema y unas fechas de inicio y finalización; posteriormente se eligen las 5 respuestas que obtuvieron una mayor votación para que un grupo de jurados (elegidos dentro de los trabajadores de la Universidad del Valle) puedan decidir cuáles son las 3 mejores de acuerdo a 5 criterios de decisión."},
+    {"pregunta":"Si mi propuesta es elegida entre las mejores 3 calificadas por los jurados, ¿qué debo hacer?", "respuesta":"Uno de los coordinadores de la página web se pondrá en contacto contigo a través de tu correo institucional. ¡Quédate atento!."}
+]
+}

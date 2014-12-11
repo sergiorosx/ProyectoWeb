@@ -89,7 +89,7 @@ if (isset($_SESSION['autorizado']) && isset($_SESSION['alias']) && isset($_SESSI
 	    <div class="modal-content">
 	      <div class="modal-header">
 	        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-	        <h4 class="modal-title" id="myModalLabel1">Inicio de Sesión</h4>
+	        <h4 class="modal-title" id="usuarioLabel">Inicio de Sesión</h4>
 	      </div>
         <form id="formlogin" method="post">
   	      <div class="modal-body" id="login_details">

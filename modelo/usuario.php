@@ -66,7 +66,7 @@ class Usuario {
 		}
 	}
 	
-	function crearUsuario ($alias, $contrasena, $nombre, $correouv, $correofb, $usuariotw, $rol, $tipodoc, $numdoc, $numcel) {
+	function crearUsuario($alias, $contrasena, $nombre, $correouv, $correofb, $usuariotw, $rol, $tipodoc, $numdoc, $numcel) {
 		$this->alias = $alias;
 		$this->contrasena = $contrasena;
 		$this->nombre = $nombre;
@@ -83,16 +83,46 @@ class Usuario {
 		}
 	}
 	
+	function editarUsuario($alias, $contrasena, $nombre, $correouv, $correofb, $usuariotw, $rol, $tipodoc, $numdoc, $numcel) {
+		$this->alias = $alias;
+		$this->contrasena = $contrasena;
+		$this->nombre = $nombre;
+		$this->correouv = $correouv;
+		$this->correofb = $correofb;
+		$this->usuariotw = $usuariotw;
+		$this->rol = $rol;
+		$this->tipodoc = $tipodoc;
+		if (existeUsuario($this->alias, $this->correouv)) {
+			editarUser($alias, $nombre, $correouv, $correofb, $usuariotw, $rol, $tipodoc, $numdoc, $numcel);
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	function eliminarUsuario($alias, $correouv) {
+		$resultado = eliminarUser($alias, $correouv);
+		return $resultado;
+	}
+	
 	function consultarUsuario(){
 		$arregloUsuarios = consultarUsuarios();
 		return $arregloUsuarios;
 	}
+
+	function getUsuarios() {
+		$usuarios = consultarUsuarios();
+		$json = json_encode($usuarios);
+		return $json;
+	}
 }
 //$Usuario = new Usuario();
+//$Usuario->eliminarUsuario('sergiogl', 'sergio.garcia@correounivalle.edu.co');
 //$arreglo = $Usuario -> consultarUsuario();
 //$Usuario->validarUsuario('sergio.garcia@correounivalle.edu.co', 'univalle123');
 //$Usuario->validarUsuario('sergio.garcia@correounivalle.edu.co', 'univa');
 //$Usuario->validarUsuarioFb('sergiorosx@hotmail.com');
 //$Usuario->validarUsuarioFb('juancamilo_lopez9218@hotmail.com');
 //$Usuario->validarUsuarioTw('sergiorosx');*/
+//$Usuario->getUsuarios();
 ?>

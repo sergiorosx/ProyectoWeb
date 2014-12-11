@@ -1,0 +1,8 @@
+[29-Nov-2014 20:58:13] PHP Warning:  pg_query() [<a href='function.pg-query'>function.pg-query</a>]: Query failed: ERROR:  value too long for type character varying(3) in /home1/sglrsx/public_html/modelo/conexion_db.php on line 26
+[29-Nov-2014 20:58:13] PHP Warning:  pg_freeresult() expects parameter 1 to be resource, boolean given in /home1/sglrsx/public_html/modelo/conexion_db.php on line 28
+[29-Nov-2014 21:02:47] PHP Warning:  pg_query() [<a href='function.pg-query'>function.pg-query</a>]: Query failed: ERROR:  value too long for type character varying(3) in /home1/sglrsx/public_html/modelo/conexion_db.php on line 26
+[29-Nov-2014 21:02:47] PHP Warning:  pg_freeresult() expects parameter 1 to be resource, boolean given in /home1/sglrsx/public_html/modelo/conexion_db.php on line 28
+[03-Dec-2014 07:57:26] PHP Warning:  pg_query() [<a href='function.pg-query'>function.pg-query</a>]: Query failed: ERROR:  value too long for type character varying(3) in /home1/sglrsx/public_html/modelo/conexion_db.php on line 26
+[03-Dec-2014 07:57:26] PHP Warning:  pg_freeresult() expects parameter 1 to be resource, boolean given in /home1/sglrsx/public_html/modelo/conexion_db.php on line 28
+[03-Dec-2014 08:03:57] PHP Warning:  pg_query() [<a href='function.pg-query'>function.pg-query</a>]: Query failed: ERROR:  value too long for type character varying(3) in /home1/sglrsx/public_html/modelo/conexion_db.php on line 26
+[03-Dec-2014 08:03:57] PHP Warning:  pg_freeresult() expects parameter 1 to be resource, boolean given in /home1/sglrsx/public_html/modelo/conexion_db.php on line 28

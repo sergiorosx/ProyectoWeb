@@ -41,6 +41,9 @@ $(document).ready(function() {
 					$('#modalconvocatoria').modal('hide');
 					$('#formconv')[0].reset();
 					$('#convocatoria').removeAttr('disabled');
+					// refrescar tabla automaticamente
+					$('#tablaconvocatoria').bootstrapTable('refresh', {silent: true});
+					console.log('refresca tabla');
                 }
             }, 'json').fail(function() {
                 // just in case posting your form failed
@@ -51,15 +54,6 @@ $(document).ready(function() {
         }
     });
 });
-
-function cargarData() {
-	$.post('JSon.php', post_data, function(response) {
-                return response;
-            }, 'json').fail(function() {
-                // just in case posting your form failed
-                console.log( "Posting failed." );
-            });
-}
 
 function funciona() {
 	alert("funciona");

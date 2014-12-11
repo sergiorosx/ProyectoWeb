@@ -75,7 +75,7 @@ if ($_SESSION['rol'] != 'Administrador') {
 		  <li class="dropdown">
 			<a href="#" class="dropdown-toggle" data-toggle="dropdown">¡Bienvenido<strong><?php echo ' '.$_SESSION['alias'].'!'; ?></strong> <b class="caret"></b></a>
 			<ul class="dropdown-menu">
-			  <li><a href="#" id="micuenta">Mi cuenta</a></li>
+			  <li><a href="#" class="micuenta">Mi cuenta</a></li>
 			  <li class="divider"></li>
 			  <li><a href="logout.php">Cerrar sesion</a></li>
 			</ul>
@@ -86,48 +86,100 @@ if ($_SESSION['rol'] != 'Administrador') {
 	</nav>
 	
 	<!--Modal datos usuario y rol-->
-	<!-- Modal crear/editar usuario -->
-	<div class="modal fade" id="modalusuario" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2" aria-hidden="true">
+	<!-- Modal crear usuario -->
+	<div class="modal fade" id="crearusuario" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2" aria-hidden="true">
 		<div class="modal-dialog" style="margin-top: 100px;">
 			<div class="modal-content">
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-					<h4 class="modal-title" id="myModalLabel2">Crear/Editar usuario</h4>
+					<h4 class="modal-title" id="crearUsuarioLabel">Crear usuario</h4>
 				</div>
-				<form id="formusuario" method="post">
+				<form id="formcrearusuario" method="post">
 					<div class="modal-body" id="usuario_details">
 						<span >*Nombre Completo</span><br />
-						<input type="text" placeholder="Escriba su nombre completo" maxlength="30" name="usuario_nombre" required="true" /> </br></br>
+						<input type="text" class="requerido" placeholder="Escriba su nombre completo" maxlength="30" name="usuario_nombre" required /> </br></br>
 						<span >*Correo institucional</span><br />
-						<input type="email" placeholder="example@coreounivalle.edu.co" name="usuario_correo" required="true" /></br></br>
+						<input type="email" class="requerido" placeholder="example@coreounivalle.edu.co" name="usuario_correo" required /></br></br>
 						<span >*Alias</span><br />
-						<input type="text" placeholder="miusuario" name="usuario_nick" required/> </br></br>
+						<input type="text" class="requerido" placeholder="miusuario" name="usuario_nick" required="true"/> </br></br>
 						<span >*Rol</span><br />
 						<select name="usuario_rol" class="form-control">
 							<option>Participante</option>
 							<option>Coordinador</option>
 							<option>Jurado</option>
 							<option>Administrador</option>
-						</select> </br></br>
+						</select> </br>
 						<span >*Contraseña</span><br />
-						<input type="password" placeholder="Escriba su contraseña" name="usuario_contrasenia" required="true" /></br></br>
+						<input type="password" class="requerido" placeholder="Escriba su contraseña" name="usuario_contrasenia" required /></br></br>
 						<span >*Repetir contraseña</span><br />
-						<input type="password" placeholder="Repita su contraseña" name="usuario_repcontrasenia" required="true" /> </br></br>
+						<input type="password"class="requerido" placeholder="Repita su contraseña" name="usuario_repcontrasenia" required /> </br></br>
 						<span >Correo de facebook (opcional)</span><br />
-						<input type="email" placeholder="example@example.com" name="usuario_face" /> </br></br>
+						<input type="email" class="norequerido" placeholder="example@example.com" name="usuario_face" /> </br></br>
 						<span >Usuario Twitter (opcional)</span><br />
-						<input type="text" placeholder="username" maxlength="40" name="usuario_twitter" /> </br></br>
+						<input type="text" class="norequerido" placeholder="username" maxlength="40" name="usuario_twitter" /> </br></br>
 						<span >Tipo documento (opcional)</span><br />
-						<input type="text" placeholder="T.I. o C.C. o C.E." maxlength="40" name="usuario_tipodoc" /> </br></br>
+						<select name="usuario_tipodoc" class="form-control">
+							<option>T.I.</option>
+							<option>C.C.</option>
+							<option>C.E.</option>
+						</select> </br>
 						<span >Numero documento (opcional)</span><br />
-						<input type="text" placeholder="Escriba un numero sin puntos" maxlength="40" name="usuario_dcto" /> </br></br>
+						<input type="text" class="norequerido" placeholder="Escriba un numero sin puntos" maxlength="40" name="usuario_dcto" /> </br></br>
 						<span >Numero de celular (opcional)</span><br />
-						<input type="text" placeholder="Escriba un numero sin puntos" maxlength="40" name="usuario_cel" /> </br></br>
-						<span>* Campos obligatorios</span>
-						<span id="error_usuario"></span>
+						<input type="text" class="norequerido" placeholder="Escriba un numero sin puntos" maxlength="40" name="usuario_cel" /> </br></br>
+						<span>* Campos obligatorios</span></br>
+						<span id="error_crearusuario"></span>
 					</div>
 					<div class="modal-footer" >
-						<input style="float: left" type="submit" class="btn btn-success" value="Guardar" id="usuario"/>
+						<input style="float: left" type="submit" class="btn btn-success" value="Crear" id="usuario"/>
+					</div>
+				</form>
+			</div><!-- /.modal-content -->
+		</div><!-- /.modal-dialog -->
+	</div><!-- ./Modal crear usuario -->
+	
+	<!-- Modal editar usuario -->
+	<div class="modal fade" id="editarusuario" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2" aria-hidden="true">
+		<div class="modal-dialog" style="margin-top: 100px;">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					<h4 class="modal-title" id="usuarioLabel">Editar usuario</h4>
+				</div>
+				<form id="formeditarusuario" method="post">
+					<div class="modal-body" id="usuario_details">
+						<span >*Nombre Completo</span><br />
+						<input type="text" class="requerido" placeholder="Escriba su nombre completo" maxlength="30" name="usuario_nombre" required /> </br></br>
+						<span >*Correo institucional</span><br />
+						<input type="email" class="requerido" placeholder="example@coreounivalle.edu.co" name="usuario_correo" required /></br></br>
+						<span >*Alias</span><br />
+						<input type="text" class="requerido" placeholder="miusuario" name="usuario_nick" required="true"/> </br></br>
+						<span >*Rol</span><br />
+						<select name="usuario_rol" class="form-control">
+							<option>Participante</option>
+							<option>Coordinador</option>
+							<option>Jurado</option>
+							<option>Administrador</option>
+						</select> </br>
+						<span >Correo de facebook (opcional)</span><br />
+						<input type="email" class="norequerido" placeholder="example@example.com" name="usuario_face" /> </br></br>
+						<span >Usuario Twitter (opcional)</span><br />
+						<input type="text" class="norequerido" placeholder="username" maxlength="40" name="usuario_twitter" /> </br></br>
+						<span >Tipo documento (opcional)</span><br />
+						<select name="usuario_tipodoc" class="form-control">
+							<option>T.I.</option>
+							<option>C.C.</option>
+							<option>C.E.</option>
+						</select> </br>
+						<span >Numero documento (opcional)</span><br />
+						<input type="text" class="norequerido" placeholder="Escriba un numero sin puntos" maxlength="40" name="usuario_dcto" /> </br></br>
+						<span >Numero de celular (opcional)</span><br />
+						<input type="text" class="norequerido" placeholder="Escriba un numero sin puntos" maxlength="40" name="usuario_cel" /> </br></br>
+						<span>* Campos obligatorios</span>
+						<span id="error_editarusuario"></span>
+					</div>
+					<div class="modal-footer" >
+						<input style="float: left" type="submit" class="btn btn-success" value="Editar" id="usuario"/>
 					</div>
 				</form>
 			</div><!-- /.modal-content -->
@@ -166,13 +218,14 @@ if ($_SESSION['rol'] != 'Administrador') {
 				<h1>Usuarios  <small>crear, editar, eliminar</small></h1>
 			</div>
 			<input style="float: left" type="submit" class="btn btn-primary usuariopopup" value="Crear usuario" id="crearusuario"/>
-			<table id="events-id2" data-toggle="table" data-url="data2.json" data-height="400" data-pagination="true" data-search="true">
+			<table id="tablausuarios" data-toggle="table" data-url="web/data/data_usuarios.php" data-height="400" data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-search="true" data-select-item-name="toolbar1" data-pagination="true">
 				<thead>
 					<tr>
-						<th data-field="id" data-sortable="true">Alias</th>
-						<th data-field="name" data-sortable="true">Correo Univalle</th>
-						<th data-field="price" data-sortable="true">Correo Facebook</th>
-						<th data-field="operate" data-formatter="operateFormatter1" data-events="operateEvents1">Opciones</th>
+						<th data-field="alias" data-sortable="true">Alias</th>
+						<th data-field="nombre_completo" data-sortable="true">Nombre Completo</th>
+						<th data-field="rol" data-sortable="true">Rol</th>
+						<th data-field="correounivalle" data-sortable="true">Correo Univalle</th>
+						<th data-field="Operate" data-formatter="operateFormatter1" data-events="operateEvents1">Opciones</th>
 					</tr>
 				</thead>
 			</table>
@@ -190,14 +243,41 @@ if ($_SESSION['rol'] != 'Administrador') {
 				}
 					window.operateEvents1 = {
 					'click .editu': function (e, value, row, index) {
-						//alert('You click edit icon, row: ' + JSON.stringify(row));
-						console.log(value, row, index);
-						$('#modalusuario').modal('toggle');
+						// se muestra el formulario para editar usuario
+						$('#editarusuario').modal('toggle');
+						// se obtienen los datos del usuario
+						$("#editarusuario input[name='usuario_nombre']").val(row.nombre_completo);
+						$("#editarusuario input[name='usuario_nick']").val(row.alias);
+						$("#editarusuario input[name='usuario_correo']").val(row.correounivalle);
+						$("#editarusuario select[name='usuario_rol']").val(row.rol);
 					},
 					'click .removeu': function (e, value, row, index) {
-						//alert('You click remove icon, row: ' + JSON.stringify(row));
-						console.log(value, row, index);
-					}
+						//console.log(value, row, index);
+						
+						post_data = {'aliasdel': row.alias};
+						
+						$.post('../controlador/controladoradmin.php', post_data, function(response) {
+								console.log('ajax ok');
+								if(response.type == 'error'){ //load json data from server and output message    
+									console.log('error ' + response.type + " " + response.text);
+									alert('Error: ' + response.text);
+								} else {
+									console.log('No hay error ' + response.type + " " + response.text);
+									$('#tablaconvocatoria').bootstrapTable('updateRow', {	index: index,
+																							row: {
+																								nombre: row.nombre,
+																								descripcion: row.descripcion,
+																								fecha_inicio: row.fecha_inicio,
+																								fecha_fin: row.fecha_fin,
+																								publicada: 't'
+																							}
+																						});
+								}
+							}, 'json').fail(function() {
+								// just in case posting your form failed
+								console.log( "Posting failed." );
+							});
+					},
 				};
 			</script>
 		</div>
@@ -210,12 +290,11 @@ if ($_SESSION['rol'] != 'Administrador') {
 				<h1>Roles  <small>crear, editar, eliminar</small></h1>
 			</div>
 			<input style="float: left" type="submit" class="btn btn-primary rolpopup" value="Crear Rol" id="crearrol"/> 
-			<table id="tablarol" data-toggle="table" data-url="data1.json" data-height="300">
+			<table id="tablarol" data-toggle="table" data-url="" data-height="300">
 				<thead>
 					<tr>
 						<th data-field="id" data-sortable="true">Alias</th>
-						<th data-field="name" data-sortable="true">Correo Univalle</th>
-						<th data-field="price" data-sortable="true">Correo Facebook</th>
+						<th data-field="name" data-sortable="true">nombre</th>
 						<th data-field="operate" data-formatter="operateFormatter2" data-events="operateEvents2">Opciones</th>
 					</tr>
 				</thead>
@@ -233,13 +312,11 @@ if ($_SESSION['rol'] != 'Administrador') {
 				}
 				window.operateEvents2 = {
 					'click .editr': function (e, value, row, index) {
-						//alert('You click edit icon, row: ' + JSON.stringify(row));
 						console.log(value, row, index);
 						$('#modalrol').modal('toggle');
 					},
 					'click .remover': function (e, value, row, index) {
-						//alert('You click remove icon, row: ' + JSON.stringify(row));
-						console.log(value, row, index);
+						//console.log(value, row, index);
 					}
 				};
 			</script>
